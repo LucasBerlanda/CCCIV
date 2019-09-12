@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Pessoa</title>
+    <link type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link type="text/css" th:href="@{/bootstrap/css/bootstrap-responsive.min.css}" rel="stylesheet">
+    <link type="text/css" th:href="@{/css/theme.css}" rel="stylesheet">
+    <link type="text/css" th:href="@{/images/icons/css/font-awesome.css}" rel="stylesheet">
+    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+          rel='stylesheet'>
+</head>
+<body>
+<div class="col-xs-12">
+    <form>
+        <div class="form-group">
+            <label>Nome</label>
+            <input type="text" class="form-control" id="nome" placeholder="Nome">
+        </div>
+        <div class="form-group">
+            <label>Sobrenome</label>
+            <input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome">
+        </div>
+        <div class="form-group">
+            <label>Cpf</label>
+            <input type="text" class="form-control" id="cpf" placeholder="Cpf">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label>Telefone</label>
+            <input type="text" class="form-control" id="telefone" placeholder="Telefone">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
+
+
+</body>
+</html>
