@@ -1,6 +1,7 @@
 package br.edu.unoesc.controller;
 
-import br.edu.unoesc.service.PessoaService;
+import br.edu.unoesc.repository.PessoaRepository;
+//import br.edu.unoesc.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +13,7 @@ import br.edu.unoesc.model.Pessoa;
 public class PessoaController {
 
     @Autowired
-    private PessoaService pessoaService;
+    private PessoaRepository pessoaService;
 
     @GetMapping("/pessoa/cadastro")
     public String cadastro(){
@@ -21,8 +22,8 @@ public class PessoaController {
 
     @PostMapping("/pessoa/cadastro")
     public String cadastro(Model model, Pessoa pessoa) {
-        pessoaService.salvar(pessoa);
-        return "pessoa/cadastro";
+        pessoaService.save(pessoa);
+        return "pessoa/cadastrar";
     }
 
 }
