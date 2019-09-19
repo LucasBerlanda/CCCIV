@@ -3,9 +3,10 @@ package br.edu.unoesc.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+//spring.resources.static-locations=classpath:/custom/
 @Controller
 public class IndexController{
-    //spring.resources.static-locations=classpath:/custom/
+
 
     @GetMapping("/")
     public String index(){

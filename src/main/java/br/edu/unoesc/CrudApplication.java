@@ -1,6 +1,5 @@
-package br.edu.unoesc.controller;
+package br.edu.unoesc;
 
-import br.edu.unoesc.repository.PessoaDAO;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,7 +8,6 @@ public class CrudApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CrudApplication.class, args);
-
 	}
 
 }
