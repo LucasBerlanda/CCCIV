@@ -20,17 +20,20 @@ public class Livro {
 
     private Integer anoPublicacao;
 
+    private Integer quantidade;
+
     public Livro() {
 
     }
 
-    public Livro(Long id, String titulo, String autores, String genero, String editora, Integer anoPublicacao) {
+    public Livro(Long id, String titulo, String autores, String genero, String editora, Integer anoPublicacao, Integer quantidade) {
         Id = id;
         this.titulo = titulo;
         this.autores = autores;
         this.genero = genero;
         this.editora = editora;
         this.anoPublicacao = anoPublicacao;
+        this.quantidade = quantidade;
     }
 
     public Long getId() {
@@ -79,5 +82,13 @@ public class Livro {
 
     public void setAnoPublicacao(Integer anoPublicacao) {
         this.anoPublicacao = anoPublicacao;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
     }
 }
