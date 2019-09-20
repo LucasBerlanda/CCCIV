@@ -19,10 +19,10 @@ public class LivroController {
         return "livro/cadastrar";
     }
 
-    @PostMapping("/livro/enviar")
+    @PostMapping("/livro/cadastro")
     public String cadastro(Model model, Livro livro) {
         this.service.salvar(livro);
-        return "index";
+        return "livro/cadastrar";
     }
 
 

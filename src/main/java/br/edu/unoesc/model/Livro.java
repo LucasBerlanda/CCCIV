@@ -12,8 +12,7 @@ public class Livro {
 
     private String titulo;
 
-    @OneToMany
-    private List<Autor> autores;
+    private String autores;
 
     private String genero;
 
@@ -25,7 +24,7 @@ public class Livro {
 
     }
 
-    public Livro(Long id, String titulo, List<Autor> autores, String genero, String editora, Integer anoPublicacao) {
+    public Livro(Long id, String titulo, String autores, String genero, String editora, Integer anoPublicacao) {
         Id = id;
         this.titulo = titulo;
         this.autores = autores;
@@ -50,11 +49,11 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    public List<Autor> getAutores() {
+    public String getAutores() {
         return autores;
     }
 
-    public void setAutores(List<Autor> autores) {
+    public void setAutores(String autores) {
         this.autores = autores;
     }
 
