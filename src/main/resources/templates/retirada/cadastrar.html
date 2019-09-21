@@ -7,13 +7,13 @@
 <body>
 <form action="/retirada/cadastro" method="post">
     <label>Código cliente:</label>
-    <input type="number" name="pessoa.codigo" class="form-control">
+    <select class="form-control" name="pessoa" id="pessoa">
+        <option th:each="objetoPessoa : ${listPessoa}" th:value="${objetoPessoa.id}" th:text="${objetoPessoa.nome} + ' ' + ${objetoPessoa.sobrenome}" ></option>
+    </select>
     <label>Exemplar:</label>
-    <select class="form-control" name="exemplar" id="exemplar">
+    <select class="form-control" name="livro" id="livro">
         <option th:each="objeto : ${list}" th:value="${objeto.id}" th:text=" 'Título: '+ ${objeto.titulo} " ></option>
     </select>
-    <label>Data:</label>
-    <input type="date" name="data">
     <label>Quantidade:</label>
     <input type="number" name="quantidade">
     <input name="Enviar" type="submit">
