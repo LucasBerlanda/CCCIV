@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar retirada de livros</title>
+</head>
+<body>
+<form action="/retirada/cadastro" method="post">
+    <label>Código cliente:</label>
+    <input type="number" name="pessoa.codigo" class="form-control">
+    <label>Exemplar:</label>
+    <select class="form-control" name="exemplar" id="exemplar">
+        <option th:each="objeto : ${list}" th:value="${objeto.id}" th:text=" 'Título: '+ ${objeto.titulo} " ></option>
+    </select>
+    <label>Data:</label>
+    <input type="date" name="data">
+    <label>Quantidade:</label>
+    <input type="number" name="quantidade">
+    <input name="Enviar" type="submit">
+
+</form>
+
+</body>
+</html>
