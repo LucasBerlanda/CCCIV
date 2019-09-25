@@ -103,7 +103,7 @@
     </div>
 </div>
 <div class="col-xs-8">
-    <form action="/retirada/cadastro" method="post">
+    <form th:action="@{/retirada/cadastro}" method="post">
         <label>Código cliente:</label>
         <select class="form-control" name="pessoa" id="pessoa">
             <option th:each="objetoPessoa : ${listPessoa}" th:value="${objetoPessoa.id}" th:text="${objetoPessoa.nome} + ' ' + ${objetoPessoa.sobrenome}" ></option>

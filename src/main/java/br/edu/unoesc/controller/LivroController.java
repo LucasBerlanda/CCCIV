@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LivroController {
 
     @Autowired
-    private LivroService service;
+    private LivroService livroService;
 
     @GetMapping("/livro/cadastro")
     public String cadastro() {
@@ -21,7 +21,7 @@ public class LivroController {
 
     @PostMapping("/livro/cadastro")
     public String cadastro(Model model, Livro livro) {
-        this.service.salvar(livro);
+        this.livroService.salvar(livro);
         return "livro/cadastrar";
     }
 

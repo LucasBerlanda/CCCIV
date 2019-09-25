@@ -1,9 +1,8 @@
 package br.edu.unoesc.controller;
 
 import br.edu.unoesc.model.Retirada;
-import br.edu.unoesc.repository.LivroRepository;
-import br.edu.unoesc.repository.PessoaRepository;
 import br.edu.unoesc.service.LivroService;
+import br.edu.unoesc.service.PessoaService;
 import br.edu.unoesc.service.RetiradaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,14 +19,14 @@ public class RetiradaController {
     private RetiradaService retiradaService;
 
     @Autowired
-    private LivroRepository livroRepository;
+    private LivroService livroService;
 
     @Autowired
-    private PessoaRepository pessoaRepository;
+    private PessoaService pessoaService;
 
     public String caregar(Model model){
-        model.addAttribute("list", livroRepository.findAll());
-        model.addAttribute("listPessoa", pessoaRepository.findAll());
+        model.addAttribute("list", livroService.listar());
+        model.addAttribute("listPessoa", pessoaService.listar());
         return "retirada/cadastrar";
     }
 
