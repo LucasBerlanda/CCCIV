@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class LivroController {
 
@@ -23,6 +25,12 @@ public class LivroController {
     public String cadastro(Model model, Livro livro) {
         this.livroService.salvar(livro);
         return "livro/cadastrar";
+    }
+    @GetMapping("/livro/lista")
+    public String lista(Model model) {
+        List<Livro> livros = livroService.listar();
+        model.addAttribute("lista", livros);
+        return "livro/lista";
     }
 
 

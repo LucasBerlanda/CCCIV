@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head th:data-th-replace="@{import/head :: head}">
+</head>
+<body>
+<div data-th-replace="import/menuSuperior :: menuSuperior"></div>
+<div class="col-xs-12">
+    <div class="col-sm-3" data-th-replace="import/menuLateral :: menuLateral"></div>
+    <div class="offset4 ">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Autores</th>
+                <th scope="col">Genero</th>
+                <th scope="col">Editora</th>
+                <th scope="col">Ano Publicação</th>
+                <th scope="col">Opções</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="livro : ${lista}">
+                <td th:text="${livro.id}"></td>
+                <td th:text="${livro.titulo}"></td>
+                <td th:text="${livro.autores}"></td>
+                <td th:text="${livro.genero}"></td>
+                <td th:text="${livro.editora}"></td>
+                <td th:text="${livro.anoPublicacao}"></td>
+                <td>
+                    <a class="btn btn-outline-primary" th:href="@{cadastro/{codigo}(codigo=${livro.id})}"><i class="fa fa-pen"></i></a>
+                    <a class="btn btn-outline-danger" th:attr="data-codigo=${livro.id}"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:data-th-replace="@{import/scripts :: script}" ></div>
+</body>
+</html>
