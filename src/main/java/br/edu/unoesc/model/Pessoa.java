@@ -14,6 +14,8 @@ public class Pessoa {
 
     private String sobrenome;
 
+    private String cpf;
+
     private String email;
 
     private String telefone;
@@ -43,6 +45,15 @@ public class Pessoa {
 
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
+    }
+
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getCpf() {
+        return cpf;
     }
 
 
