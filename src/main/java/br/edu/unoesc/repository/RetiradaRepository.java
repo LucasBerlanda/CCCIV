@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RetiradaRepository extends JpaRepository<Retirada, Long> {
-    Retirada findByid(Long id);
+
 }

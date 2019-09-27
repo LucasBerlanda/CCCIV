@@ -9,7 +9,7 @@
     <div class="col-sm-3" data-th-replace="import/menuLateral :: menuLateral"></div>
         <div class="offset3">
             <h1>Retirada de Livros</h1>
-            <form action="/retirada/cadastro" method="post">
+            <form th:action="@{/retirada/cadastro}" method="post">
                 <div class="form-group">
                     <label>Código cliente:</label>
                     <select class="form-control" name="pessoa" id="pessoa">
@@ -29,6 +29,7 @@
                 <button type="submit" name="Enviar" class="btn btn-success">Salvar</button>
             </form>
         </div>
-    <div th:data-th-replace="@{import/scripts :: script}" ></div>
+</div>
+<div th:data-th-replace="@{import/scripts :: script}" ></div>
 </body>
 </html>
