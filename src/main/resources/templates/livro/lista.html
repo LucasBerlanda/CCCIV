@@ -30,12 +30,15 @@
                 <td th:text="${livro.anoPublicacao}"></td>
                 <td>
                     <a class="btn btn-outline-primary" th:href="@{cadastro/{codigo}(codigo=${livro.id})}"><i class="fa fa-pen"></i></a>
-                    <a class="btn btn-outline-danger" th:attr="data-codigo=${livro.id}"><i class="fa fa-trash"></i></a>
+
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
-    <div th:data-th-replace="@{import/scripts :: script}" ></div>
+
+</div>
+<div th:data-th-replace="@{import/scripts :: script}" ></div>
+
 </body>
 </html>

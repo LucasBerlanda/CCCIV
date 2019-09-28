@@ -2,6 +2,8 @@ package br.edu.unoesc.controller;
 
 import br.edu.unoesc.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +33,11 @@ public class PessoaController {
         List<Pessoa> pessoas = pessoaService.listar();
         model.addAttribute("lista", pessoas);
         return "pessoa/lista";
+    }
+    @PostMapping("/pessoa/excluir")
+    public ResponseEntity<String> excluir(Pessoa pessoa) {
+        pessoaService.excluir(pessoa);
+        return new ResponseEntity<String>(HttpStatus.OK);
     }
 
 }
