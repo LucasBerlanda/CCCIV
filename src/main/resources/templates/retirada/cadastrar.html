@@ -11,7 +11,7 @@
             <h1>Retirada de Livros</h1>
             <form th:action="@{/retirada/cadastro}" method="post">
                 <div class="form-group">
-                    <label>Código cliente:</label>
+                    <label>Cliente:</label>
                     <select class="form-control" name="pessoa" id="pessoa">
                         <option th:each="objetoPessoa : ${listPessoa}" th:value="${objetoPessoa.id}" th:text="${objetoPessoa.nome} + ' ' + ${objetoPessoa.sobrenome}" ></option>
                     </select>
@@ -27,6 +27,7 @@
                     <input type="number" name="quantidade">
                 </div>
                 <button type="submit" name="Enviar" class="btn btn-success">Salvar</button>
+                <a th:href="@{/}" class="btn btn-default">Cancelar</a>
             </form>
         </div>
 </div>
