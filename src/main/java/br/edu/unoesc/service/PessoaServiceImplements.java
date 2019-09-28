@@ -29,4 +29,13 @@ public class PessoaServiceImplements implements PessoaService {
     public List listar() {
         return this.repository.findAll();
     }
+
+    @Override
+    public Integer quantidade() {
+        Integer qtd = 0;
+        List<Pessoa> pessoas = this.repository.findAll();
+        qtd = pessoas.size();
+        System.out.println(qtd);
+        return qtd;
+    }
 }
