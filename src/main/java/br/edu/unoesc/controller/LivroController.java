@@ -5,9 +5,12 @@ import br.edu.unoesc.service.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -17,12 +20,17 @@ public class LivroController {
     private LivroService livroService;
 
     @GetMapping("/livro/cadastro")
-    public String cadastro() {
+    public String cadastro(Model model) {
+        model.addAttribute("livro", new Livro());
         return "livro/cadastrar";
     }
 
     @PostMapping("/livro/cadastro")
-    public String cadastro(Model model, Livro livro) {
+    public String cadastro(@Valid @ModelAttribute("livro") Livro livro, BindingResult result, Model model) {
+        if(result.hasErrors()){
+            model.addAttribute("livro", livro);
+            return "livro/cadastrar";
+        }
         this.livroService.salvar(livro);
         return "livro/cadastrar";
     }

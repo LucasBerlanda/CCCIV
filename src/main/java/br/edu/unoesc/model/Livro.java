@@ -1,6 +1,10 @@
 package br.edu.unoesc.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -10,16 +14,31 @@ public class Livro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
+    @NotNull
+    @NotEmpty(message = "O título é obrigatório!")
+    @Size(max = 60, message = "O título deve ser menor!")
     private String titulo;
 
+    @NotNull
+    @NotEmpty(message = "O autor é obrigatório!")
+    @Size(max = 60, message = "O autor deve ser menor!")
     private String autores;
 
+    @NotNull
+    @NotEmpty(message = "O genero é obrigatório!")
+    @Size(max = 60, message = "O genero deve ser menor!")
     private String genero;
 
+    @NotNull
+    @NotEmpty(message = "A editora é obrigatória!")
+    @Size(max = 60, message = "A editora deve ser menor!")
     private String editora;
 
+    @NotNull(message = "Ano de publicação é obrigatório!")
     private Integer anoPublicacao;
 
+    @NotNull(message = "A quantidade é obrigatória!")
+    @Min(value = 1, message = "A quantidade é inválida")
     private Integer quantidade;
 
     private Integer quantidadeDisponivel;
