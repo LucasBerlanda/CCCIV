@@ -7,38 +7,53 @@
 <div data-th-replace="import/menuSuperior :: menuSuperior"></div>
 <div class="col-xs-12">
     <div class="col-sm-3" data-th-replace="import/menuLateral :: menuLateral"></div>
-    <div class="offset3">
-        <h1 class="text-center">Cadastro de Pessoa</h1>
-        <form th:action="@{/pessoa/cadastro}" method="post" th:object="${pessoa}">
-            <div class="form-group">
-                <label>Nome</label>
-                <input type="text" class="form-control" name="nome" placeholder="Nome">
-                <label class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro</label>
+        <div class="offset3">
+            <div class="col-xs-10">
+                <h1>Cadastro de Pessoa</h1>
+                <form th:action="@{/pessoa/cadastro}" method="post" th:object="${pessoa}">
+                    <div class="form-group">
+                        <div>
+                            <label>Nome</label>
+                            <input type="text" class="form-control" name="nome" placeholder="Nome">
+                        </div>
+                    <label class="label label-important" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro</label>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <label>Sobrenome</label>
+                            <input type="text" class="form-control" name="sobrenome" placeholder="Sobrenome">
+                        </div>
+                    <label class="label label-important" th:if="${#fields.hasErrors('sobrenome')}" th:errors="*{sobrenome}">Erro</label>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <label>Cpf</label>
+                            <input type="text" class="form-control" name="cpf" placeholder="Cpf">
+                        </div>
+                    <label class="label label-important" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}">Erro</label>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="email" placeholder="Email">
+                        </div>
+                    <label class="label label-important" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Erro</label>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <label>Telefone</label>
+                            <input type="text" class="form-control" name="telefone" placeholder="Telefone">
+                        <div>
+                    <label class="label label-important" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}">Erro</label>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                        <a th:href="@{/}" class="btn btn-default">Cancelar</a>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label>Sobrenome</label>
-                <input type="text" class="form-control" name="sobrenome" placeholder="Sobrenome">
-                <label class="text-danger" th:if="${#fields.hasErrors('sobrenome')}" th:errors="*{sobrenome}">Erro</label>
-            </div>
-            <div class="form-group">
-                <label>Cpf</label>
-                <input type="text" class="form-control" name="cpf" placeholder="Cpf">
-                <label class="text-danger" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}">Erro</label>
-            </div>
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" class="form-control" name="email" placeholder="Email">
-                <label class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Erro</label>
-            </div>
-            <div class="form-group">
-                <label>Telefone</label>
-                <input type="text" class="form-control" name="telefone" placeholder="Telefone">
-                <label class="text-danger" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}">Erro</label>
-            </div>
-            <button type="submit" class="btn btn-success">Salvar</button>
-            <a th:href="@{/}" class="btn btn-default">Cancelar</a>
-        </form>
-    </div>
+        </div>
+</div>
 <div th:data-th-replace="@{import/scripts :: script}" ></div>
 </body>
 </html>

@@ -30,7 +30,7 @@ public class Pessoa {
 
     @NotNull
     @NotEmpty(message = "O CPF é obrigatório!")
-    @CPF(message = "CPF inválido!")
+    @CPF(message = "Esse CPF é inválido!")
     @Column(name="cpf", nullable=false)
     private String cpf;
 
