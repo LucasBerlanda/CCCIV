@@ -9,26 +9,31 @@
     <div class="col-sm-3" data-th-replace="import/menuLateral :: menuLateral"></div>
     <div class="offset3">
         <h1 class="text-center">Cadastro de Pessoa</h1>
-        <form th:action="@{/pessoa/cadastro}" method="post">
+        <form th:action="@{/pessoa/cadastro}" method="post" th:object="${pessoa}">
             <div class="form-group">
                 <label>Nome</label>
                 <input type="text" class="form-control" name="nome" placeholder="Nome">
+                <label class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro</label>
             </div>
             <div class="form-group">
                 <label>Sobrenome</label>
                 <input type="text" class="form-control" name="sobrenome" placeholder="Sobrenome">
+                <label class="text-danger" th:if="${#fields.hasErrors('sobrenome')}" th:errors="*{sobrenome}">Erro</label>
             </div>
             <div class="form-group">
                 <label>Cpf</label>
                 <input type="text" class="form-control" name="cpf" placeholder="Cpf">
+                <label class="text-danger" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}">Erro</label>
             </div>
             <div class="form-group">
                 <label>Email</label>
                 <input type="email" class="form-control" name="email" placeholder="Email">
+                <label class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Erro</label>
             </div>
             <div class="form-group">
                 <label>Telefone</label>
                 <input type="text" class="form-control" name="telefone" placeholder="Telefone">
+                <label class="text-danger" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}">Erro</label>
             </div>
             <button type="submit" class="btn btn-success">Salvar</button>
             <a th:href="@{/}" class="btn btn-default">Cancelar</a>

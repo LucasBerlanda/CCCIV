@@ -1,6 +1,12 @@
 package br.edu.unoesc.model;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Pessoa")
@@ -10,14 +16,33 @@ public class Pessoa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @NotEmpty(message = "O nome é obrigatório!")
+    @Size(max = 60, message = "O nome deve ser menor!")
+    @Column(name="nome", nullable=false)
     private String nome;
 
+    @NotNull
+    @NotEmpty(message = "O sobrenome é obrigatório!")
+    @Size(max = 60, message = "O sobrenome deve ser menor!")
+    @Column(name="sobrenome", nullable=false)
     private String sobrenome;
 
+    @NotNull
+    @NotEmpty(message = "O CPF é obrigatório!")
+    @CPF(message = "CPF inválido!")
+    @Column(name="cpf", nullable=false)
     private String cpf;
 
+    @NotNull
+    @Email( message = "O e-mail é inválido!")
+    @Size(min = 1, message = "E-mail inválido!")
+    @Column(name="email", nullable=false)
     private String email;
 
+    @NotNull
+    @Size(min = 1, max = 11, message = "O telefone é inválido!")
+    @Column(name="telefone", nullable=false)
     private String telefone;
 
     public Long getId() {
