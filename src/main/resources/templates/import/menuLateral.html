@@ -1,0 +1,30 @@
+<div class="wrapper" data-th-fragment="menuLateral">
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <div class="sidebar">
+                    <ul class="widget widget-menu unstyled">
+                        <li class="active"><a th:href="@{/}"><i class="menu-icon icon-dashboard"></i>Dashboard
+                        </a></li>
+                        <li><a th:href="@{/pessoa/cadastro}"><i class="fas fa-user-friends"></i> Cadastro Pessoa</a>
+                        </li>
+                        <li><a th:href="@{/livro/cadastro}"><i class="fas fa-book"></i> Cadastro de livros</a></li>
+                        <li><a th:href="@{/retirada/cadastro}"><i class="fas fa-external-link-alt"></i> Retirar livros</a></li>
+                        <li><a th:href="@{/retirada/cadastro}"><i class="fa fa-reply-all"></i> Devolução</a></li>
+                        <li><a class="collapsed" data-toggle="collapse" href="#togglePages">
+                            <i class="icon-chevron-down pull-right"></i><i class="fas fa-list-ul"></i> Listas</a>
+                            <ul id="togglePages" class="collapse unstyled">
+                                <li><a th:href="@{/pessoa/lista}"><i class="fas fa-user-friends"></i> Pessoas</a></li>
+                                <li><a th:href="@{/livro/lista}"><i class="fas fa-book"></i> Livros </a></li>
+                                <li><a th:href="@{/}"><i class="icon-inbox"></i>Livros Emprestados</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!--/.widget-nav-->
+                    <ul class="widget widget-menu unstyled">
+                        <li><a th:href="@{/}"><i class="fas fa-info-circle"></i> Sobre <b class="label orange pull-right">
+                            19</b> </a></li>
+                        <li><a href="#"><i class="menu-icon icon-signout"></i>Logout </a></li>
+                    </ul>
+                </div>
+            </div>

@@ -6,4 +6,5 @@ import br.edu.unoesc.model.Pessoa;
 @Service
 public interface PessoaService extends Crud<Pessoa> {
 
+    Integer quantidade();
 }

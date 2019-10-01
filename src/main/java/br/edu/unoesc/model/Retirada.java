@@ -3,6 +3,7 @@ package br.edu.unoesc.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
 import java.time.LocalDate;
 
@@ -14,14 +15,25 @@ public class Retirada {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull(message = "A data é obrigatória!")
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private LocalDate data;
 
+    @NotNull(message = "A pessoa é obrigatória!")
     @ManyToOne
     private Pessoa pessoa;
 
+    @NotNull(message = "O livro é obrigatório!")
     @ManyToOne
     private Livro livro;
+
+    /**
+     * A FAZER>>>
+     * falta fazer a quantidade da retirada aqui
+     * fazer os joins com as anotações @JoinColunm(name=" name_id")
+     * fazer no @ManyToOne o (feth = FetchType.LAZY)
+     * se precisar fazer o toString
+     * **/
 
     public Retirada() {
 
