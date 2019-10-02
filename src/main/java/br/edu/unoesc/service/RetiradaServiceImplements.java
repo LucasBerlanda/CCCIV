@@ -14,19 +14,20 @@ public class RetiradaServiceImplements implements RetiradaService {
     private RetiradaRepository repository;
 
     @Override
-    public boolean salvar(Retirada dado) {
+    public void salvar(Retirada dado) {
         repository.save(dado);
-        return false;
     }
 
     @Override
-    public boolean excluir(Retirada dado) {
-        repository.delete(dado);
-        return false;
+    public void excluir(Long dadoId) {
+        repository.deleteById(dadoId);
     }
+
 
     @Override
     public List listar() {
         return this.repository.findAll();
     }
+
+
 }

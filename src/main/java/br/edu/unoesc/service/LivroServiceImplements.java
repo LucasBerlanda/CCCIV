@@ -14,15 +14,13 @@ public class LivroServiceImplements implements LivroService {
     private LivroRepository repository;
 
     @Override
-    public boolean salvar(Livro dado) {
+    public void salvar(Livro dado) {
         this.repository.save(dado);
-        return true;
     }
 
     @Override
-    public boolean excluir(Livro dado) {
-        this.repository.delete(dado);
-        return true;
+    public void excluir(Long dado) {
+        this.repository.deleteById(dado);
     }
 
     @Override

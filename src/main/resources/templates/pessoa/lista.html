@@ -9,6 +9,14 @@
     <div class="col-sm-3" data-th-replace="import/menuLateral :: menuLateral"></div>
     <div class="offset4">
         <h2>Lista de pessoas</h2>
+        <div class="well well-large">
+            <form th:action="@{pesquisaNome}" class="form-search">
+                <div class="input-append">
+                    <input type="text" class="span2 search-query form-control" name="pesquisaNome" placeholder="Pesquisar">
+                    <button type="submit" class="btn"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+        </div>
         <table class="table table-striped table-hover">
             <thead>
             <tr>
@@ -31,7 +39,7 @@
                 <td th:text="${pessoa.telefone}"></td>
                 <td>
                     <a class="btn btn-outline-primary" th:href="@{cadastro/{codigo}(codigo=${pessoa.id})}"><i class="fa fa-pen"></i></a>
-                    <a class="btn btn-outline-danger modal-excluir" id="p" data-toggle="modal" data-target="#modal-excluir" data-codigo="@{excluir/{id}(id=${pessoa.id})}"><i class="fa fa-trash"></i></a>
+                    <a class="btn btn-outline-danger modal-excluir" data-toggle="modal" data-target="#modal-excluir" id="deleteButton" th:href="@{excluir/{id}(id=${pessoa.id})}"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
             </tbody>
@@ -41,7 +49,5 @@
 </div>
     <div th:data-th-replace="@{import/scripts :: script}" ></div>
     <script th:src="@{/scripts/js/excluirPessoa.js}"></script>
-
-
 </body>
 </html>

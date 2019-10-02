@@ -1,5 +1,6 @@
 package br.edu.unoesc.service;
 
+import br.edu.unoesc.model.AutoCompleteDTO;
 import br.edu.unoesc.model.Pessoa;
 import br.edu.unoesc.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +15,14 @@ public class PessoaServiceImplements implements PessoaService {
     private PessoaRepository repository;
 
     @Override
-    public boolean salvar(Pessoa dado) {
+    public void salvar(Pessoa dado) {
         repository.save(dado);
-        return true;
     }
 
     @Override
-    public boolean excluir(Pessoa dado) {
-        repository.delete(dado);
-        return true;
+    public void excluir(Long dado) {
+        repository.deleteById(dado);
+
     }
 
     @Override
@@ -37,5 +37,10 @@ public class PessoaServiceImplements implements PessoaService {
         qtd = pessoas.size();
         System.out.println(qtd);
         return qtd;
+    }
+
+    @Override
+    public List<AutoCompleteDTO> pesquisa(String keyword){
+        return repository.pesquisa(keyword);
     }
 }

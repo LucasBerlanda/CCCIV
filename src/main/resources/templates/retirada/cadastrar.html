@@ -3,18 +3,17 @@
 <head th:data-th-replace="@{import/head :: head}" >
 
 </head>
+
 <body>
 <div data-th-replace="import/menuSuperior :: menuSuperior"></div>
 <div class="col-xs-12">
     <div class="col-sm-3" data-th-replace="import/menuLateral :: menuLateral"></div>
         <div class="offset3">
             <h2>Retirada de livros</h2>
-            <form th:action="@{/retirada/cadastro}" method="post">
+            <form th:action="@{/retirada/cadastro}" method="post" id="form">
                 <div class="form-group">
                     <label>Cliente:</label>
-                    <select class="form-control" name="pessoa" id="pessoa">
-                        <option th:each="objetoPessoa : ${listPessoa}" th:value="${objetoPessoa.id}" th:text="${objetoPessoa.nome} + ' ' + ${objetoPessoa.sobrenome}" ></option>
-                    </select>
+                    <input type="text" class="form-control" id="cliente" name="nome" placeholder="Nome">
                 </div>
                 <div class="form-group">
                     <label>Exemplar:</label>
@@ -32,5 +31,18 @@
         </div>
 </div>
 <div th:data-th-replace="@{import/scripts :: script}" ></div>
+
+<script type="text/javascript">
+    $('#cliente').autocomplete({
+        source: 'http://localhost:8080/pessoa/clientes',
+        messages: {
+            noResults: '',
+            results: function() {}
+        },
+        minLength: 2,
+        delay: 500
+    });
+</script>
+
 </body>
 </html>
