@@ -7,12 +7,14 @@ import br.edu.unoesc.service.RetiradaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
+import java.util.List;
 
 @Controller
+@RequestMapping("retirada")
 public class RetiradaController {
 
     @Autowired
@@ -30,12 +32,12 @@ public class RetiradaController {
         return "retirada/cadastrar";
     }
 
-    @GetMapping("/retirada/cadastro")
+    @GetMapping("/cadastro")
     public String cadastro(Model model){
         return caregar(model);
     }
 
-    @PostMapping("/retirada/cadastro")
+    @PostMapping("/cadastro")
     public String cadastro(Model model, Retirada retirada){
         retirada.setData(LocalDate.now());
         retiradaService.salvar(retirada);

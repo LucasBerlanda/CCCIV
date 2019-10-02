@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface Crud <T> {
 
-    boolean salvar(T dado);
+    void salvar(T dado);
 
-    boolean excluir(T dado);
+    void excluir(Long dadoId);
 
     List listar();
 

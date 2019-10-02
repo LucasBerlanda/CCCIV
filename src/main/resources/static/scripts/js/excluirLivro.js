@@ -6,4 +6,3 @@ $('table #deleteButton').on('click', function(event){
     $("#deleteModal #delRef").attr('href', href);
     $('#deleteModal').modal();
 })
-
