@@ -44,7 +44,7 @@ public class PessoaController {
     @GetMapping("/excluir/{codigo}")
     public String excluir(@PathVariable Long codigo) {
         pessoaService.excluir(codigo);
-        return "pessoa/lista";
+        return "redirect:/pessoa/lista";
     }
 
     @RequestMapping(value="clientes", method = RequestMethod.GET)

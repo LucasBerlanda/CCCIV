@@ -41,15 +41,16 @@
                 <td th:text="${livro.quantidade}"></td>
                 <td>
                     <a class="btn btn-outline-primary" th:href="@{cadastro/{codigo}(codigo=${livro.id})}"><i class="fa fa-pen"></i></a>
-
+                    <a class="btn btn-outline-danger modal-excluir" data-toggle="modal" data-target="#modal-excluir" id="deleteButton" th:href="@{excluir/{id}(id=${livro.id})}"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
-
+    <div th:data-th-replace="@{import/modalExcluirLivro :: modal-excluir}"></div>
 </div>
 <div th:data-th-replace="@{import/scripts :: script}" ></div>
+<script th:src="@{/scripts/js/excluirLivro.js}"></script>
 
 </body>
 </html>
