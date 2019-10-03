@@ -1,20 +1,20 @@
 package br.edu.unoesc.service;
 
-import br.edu.unoesc.model.Retirada;
-import br.edu.unoesc.repository.RetiradaRepository;
+import br.edu.unoesc.model.Devolucao;
+import br.edu.unoesc.repository.DevolucaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class RetiradaServiceImplements implements RetiradaService {
+public class DevolucaoServiceImplements implements DevolucaoService {
 
     @Autowired
-    private RetiradaRepository repository;
+    private DevolucaoRepository repository;
 
     @Override
-    public void salvar(Retirada dado) {
+    public void salvar(Devolucao dado) {
         repository.save(dado);
     }
 
@@ -22,7 +22,6 @@ public class RetiradaServiceImplements implements RetiradaService {
     public void excluir(Long dadoId) {
         repository.deleteById(dadoId);
     }
-
 
     @Override
     public List listar() {

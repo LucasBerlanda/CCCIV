@@ -30,6 +30,7 @@ public class LivroController {
             model.addAttribute("livro", livro);
             return "livro/cadastrar";
         }
+        livro.setQuantidadeDisponivel(livro.getQuantidade());
         this.livroService.salvar(livro);
         return "livro/cadastrar";
     }

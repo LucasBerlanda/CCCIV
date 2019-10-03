@@ -27,6 +27,8 @@ public class Retirada {
     @ManyToOne
     private Livro livro;
 
+    private Integer quantidade;
+
     /**
      * A FAZER>>>
      * falta fazer a quantidade da retirada aqui
@@ -39,11 +41,12 @@ public class Retirada {
 
     }
 
-    public Retirada(Long id, LocalDate data, Pessoa pessoa, Livro livro) {
+    public Retirada(Long id, LocalDate data, Pessoa pessoa, Livro livro, Integer quantidade) {
         this.id = id;
         this.data = data;
         this.pessoa = pessoa;
         this.livro = livro;
+        this.quantidade = quantidade;
     }
 
     public Long getId() {
@@ -76,5 +79,13 @@ public class Retirada {
 
     public void setLivro(Livro livro) {
         this.livro = livro;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
     }
 }

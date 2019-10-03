@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:data-th-replace="@{import/head :: head}" >
+
+</head>
+
+<body>
+    <div data-th-replace="import/menuSuperior :: menuSuperior"></div>
+    <div class="col-xs-12">
+        <div class="col-sm-3" data-th-replace="import/menuLateral :: menuLateral"></div>
+        <div class="offset3">
+            <h2>Devolução de livros</h2>
+            <form th:action="@{/devolucao/cadastro}" method="post" id="form">
+                <div class="form-group">
+                    <label>Exemplar:</label>
+                    <select class="form-control" name="livro" id="livro">
+                        <option th:each="objeto : ${list}" th:value="${objeto.id}" th:text=" 'Título: '+ ${objeto.titulo} " ></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Quantidade:</label>
+                    <input type="number" name="quantidade">
+                </div>
+                <button type="submit" name="Enviar" class="btn btn-success">Salvar</button>
+                <a th:href="@{/}" class="btn btn-default">Cancelar</a>
+            </form>
+        </div>
+    </div>
+    <div th:data-th-replace="@{import/scripts :: script}" ></div>
+</body>
