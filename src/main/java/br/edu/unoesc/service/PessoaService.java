@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public interface PessoaService extends Crud<Pessoa> {
 
-    public List<AutoCompleteDTO> pesquisa(String keyword);
+    public List<AutoCompleteDTO> pesquisaCliente(String keyword);
 
     Integer quantidade();
 

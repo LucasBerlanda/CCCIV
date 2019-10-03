@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head th:data-th-replace="@{import/head :: head}" ></head>
+<body>
+<div class="span10">
+    <form th:action="@{/loginUser}" method="post" class="span10">
+        <div class="form-group span10">
+            <div>
+                <label>Email</label>
+                <input type="text" class="form-control span8" name="username" placeholder="Email">
+            </div>
+        </div>
+        <div class="form-group span8">
+            <div>
+                <label>Senha</label>
+                <input type="password" class="form-control span8" name="password" placeholder="Senha">
+            </div>
+        </div>
+        <div class="form-group span8">
+            <button type="submit" class="btn btn-success">Salvar</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

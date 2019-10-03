@@ -51,7 +51,7 @@ public class PessoaController {
     @ResponseBody
     public List<AutoCompleteDTO> clientes(HttpServletRequest request){
         String keyword = request.getParameter("term");
-        List<AutoCompleteDTO> lista = pessoaService.pesquisa(keyword);
+        List<AutoCompleteDTO> lista = pessoaService.pesquisaCliente(keyword);
         return lista;
     }
 }

@@ -14,6 +14,6 @@ import java.util.List;
 public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
 
     @Query("SELECT p.id as id, p.nome as label FROM Pessoa p where nome like %:keyword%")
-    public List<AutoCompleteDTO> pesquisa(@Param("keyword") String keyword);
+    public List<AutoCompleteDTO> pesquisaCliente(@Param("keyword") String keyword);
 
 }

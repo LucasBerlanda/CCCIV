@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head th:data-th-replace="@{import/head :: head}" >
-
 </head>
 
 <body>
 <div data-th-replace="import/menuSuperior :: menuSuperior"></div>
-<div class="col-xs-12">
-    <div class="col-sm-3" data-th-replace="import/menuLateral :: menuLateral"></div>
-        <div class="offset3">
-            <h2>Retirada de livros</h2>
-            <form th:action="@{/retirada/cadastro}" method="post" id="form">
-                <div class="form-group">
+<div class="">
+    <div class="span4" data-th-replace="import/menuLateral :: menuLateral"></div>
+        <div class="span8">
+            <form th:action="@{/retirada/cadastro}" method="post" id="form" class="span8">
+                <h2 class="span8">Retirada de livros</h2>
+                <div class="form-group span8">
                     <label>Cliente:</label>
-                    <input type="text" class="form-control" id="cliente" name="nome" placeholder="Nome">
+                    <input type="text" class="form-control span4" id="cliente" placeholder="Nome do cliente" autocomplete="off">
+                    <input type="hidden" id="user" name="user" value="">
                 </div>
-                <div class="form-group">
-                    <label>Exemplar:</label>
-                    <select class="form-control" name="livro" id="livro">
-                        <option th:each="objeto : ${list}" th:value="${objeto.id}" th:text=" 'Título: '+ ${objeto.titulo} " ></option>
-                    </select>
+                <div class="form-group span8">
+                    <label>Livro:</label>
+                    <input type="text" class="form-control span4" id="livro" placeholder="Nome do livro" autocomplete="off">
+                    <input type="hidden" id="idLivro" name="livro" value="">
                 </div>
-                <div class="form-group">
+
+                <div class="form-group span8">
                     <label>Quantidade:</label>
-                    <input type="number" name="quantidade">
+                    <input type="number" name="quantidade" class="form-control span4">
                 </div>
                 <button type="submit" name="Enviar" class="btn btn-success">Salvar</button>
                 <a th:href="@{/}" class="btn btn-default">Cancelar</a>
@@ -31,18 +31,42 @@
         </div>
 </div>
 <div th:data-th-replace="@{import/scripts :: script}" ></div>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!--<script>-->
+<!--$("#cliente").autocomplete({-->
+<!--    source: 'http://localhost:8080/pessoa/clientes'-->
+<!--});-->
+<!--</script>-->
 
-<script type="text/javascript">
-    $('#cliente').autocomplete({
-        source: 'http://localhost:8080/pessoa/clientes',
-        messages: {
-            noResults: '',
-            results: function() {}
-        },
-        minLength: 2,
-        delay: 500
-    });
+<script>
+$("#cliente").autocomplete({
+    source: 'http://localhost:8080/pessoa/clientes',
+    messages: {
+        noResults: '',
+        results: function() {}
+    },
+    minLength: 1,
+    select: function(event, ui) {
+        $("#user").val(ui.item.id);
+    }
+});
 </script>
+<script>
+$("#livro").autocomplete({
+    source: 'http://localhost:8080/livro/exemplares',
+    messages: {
+        noResults: '',
+        results: function() {}
+    },
+    minLength: 1,
+    select: function(event, ui) {
+        $("#idLivro").val(ui.item.id);
+    }
+});
+</script>
+
+
 
 </body>
 </html>
