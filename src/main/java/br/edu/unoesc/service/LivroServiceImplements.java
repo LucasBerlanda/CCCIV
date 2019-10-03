@@ -1,5 +1,6 @@
 package br.edu.unoesc.service;
 
+import br.edu.unoesc.model.AutoCompleteDTO;
 import br.edu.unoesc.model.Livro;
 import br.edu.unoesc.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,10 @@ public class LivroServiceImplements implements LivroService {
         qtd = livros.size();
 
         return qtd;
+    }
+    @Override
+    public List<AutoCompleteDTO> pesquisaLivro(String keyword){
+        return repository.pesquisaLivro(keyword);
     }
 
 }

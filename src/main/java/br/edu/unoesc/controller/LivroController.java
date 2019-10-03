@@ -1,5 +1,6 @@
 package br.edu.unoesc.controller;
 
+import br.edu.unoesc.model.AutoCompleteDTO;
 import br.edu.unoesc.model.Livro;
 import br.edu.unoesc.service.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -44,6 +46,13 @@ public class LivroController {
     public String excluir(@PathVariable Long codigo) {
         livroService.excluir(codigo);
         return "redirect:/livro/lista";
+    }
+    @RequestMapping(value="exemplares", method = RequestMethod.GET)
+    @ResponseBody
+    public List<AutoCompleteDTO> exemplares(HttpServletRequest request){
+        String keyword = request.getParameter("term");
+        List<AutoCompleteDTO> lista = livroService.pesquisaLivro(keyword);
+        return lista;
     }
 
 
