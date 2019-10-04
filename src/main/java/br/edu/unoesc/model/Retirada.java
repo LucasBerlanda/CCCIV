@@ -3,6 +3,7 @@ package br.edu.unoesc.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
 import java.time.LocalDate;
@@ -15,8 +16,6 @@ public class Retirada {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "A data é obrigatória!")
-    @DateTimeFormat(pattern = "yyyy/MM/dd")
     private LocalDate data;
 
     @NotNull(message = "A pessoa é obrigatória!")
@@ -27,6 +26,8 @@ public class Retirada {
     @ManyToOne
     private Livro livro;
 
+    @NotNull(message = "A quantidade é obrigatória!")
+    @Min(value = 1, message = "A quantidade é inválida")
     private Integer quantidade;
 
     /**

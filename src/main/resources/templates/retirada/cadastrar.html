@@ -8,25 +8,35 @@
 <div class="">
     <div class="span4" data-th-replace="import/menuLateral :: menuLateral"></div>
         <div class="span8">
-            <form th:action="@{/retirada/cadastro}" method="post" id="form" class="span8">
+            <form th:action="@{/retirada/cadastro}" method="post" id="form" th:object="${retirada}" class="span8">
                 <h2 class="span8">Retirada de livros</h2>
                 <div class="form-group span8">
-                    <label>Cliente:</label>
-                    <input type="text" class="form-control span4" id="cliente" placeholder="Nome do cliente" autocomplete="off">
-                    <input type="hidden" id="user" name="user" value="">
+                    <div>
+                        <label>Cliente:</label>
+                        <input type="hidden" id="user" value="" name="pessoa" required th:object="${cliente}">
+                        <input type="text" class="form-control span4" id="cliente" placeholder="Nome do cliente" autocomplete="off" required>
+                    </div>
+                    <label class="label label-important" th:if="${#fields.hasErrors('pessoa')}" th:errors="*{pessoa}">Erro</label>
                 </div>
                 <div class="form-group span8">
-                    <label>Livro:</label>
-                    <input type="text" class="form-control span4" id="livro" placeholder="Nome do livro" autocomplete="off">
-                    <input type="hidden" id="idLivro" name="livro" value="">
+                    <div>
+                        <label>Livro:</label>
+                        <input type="hidden" id="idLivro" value="" name="livro" th:object="${exemplar}" required>
+                        <input type="text" class="form-control span4" id="livro" placeholder="Nome do livro" autocomplete="off" required>
+                    </div>
+                    <label class="label label-important" th:if="${#fields.hasErrors('livro')}" th:errors="*{livro}">Erro</label>
                 </div>
-
                 <div class="form-group span8">
-                    <label>Quantidade:</label>
-                    <input type="number" name="quantidade" class="form-control span4">
+                    <div>
+                        <label>Quantidade:</label>
+                        <input type="number" name="quantidade" class="form-control span4" required>
+                    </div>
+                    <label class="label label-important" th:if="${#fields.hasErrors('quantidade')}" th:errors="*{quantidade}">Erro</label>
                 </div>
-                <button type="submit" name="Enviar" class="btn btn-success">Salvar</button>
-                <a th:href="@{/}" class="btn btn-default">Cancelar</a>
+                <div class="form-group span8">
+                    <button type="submit" name="Enviar" class="btn btn-success">Salvar</button>
+                    <a th:href="@{/}" class="btn btn-default">Cancelar</a>
+                </div>
             </form>
         </div>
 </div>
