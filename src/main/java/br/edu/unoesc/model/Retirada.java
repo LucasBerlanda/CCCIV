@@ -3,6 +3,7 @@ package br.edu.unoesc.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
 import java.time.LocalDate;
@@ -15,8 +16,6 @@ public class Retirada {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "A data é obrigatória!")
-    @DateTimeFormat(pattern = "yyyy/MM/dd")
     private LocalDate data;
 
     @NotNull(message = "A pessoa é obrigatória!")
@@ -26,6 +25,10 @@ public class Retirada {
     @NotNull(message = "O livro é obrigatório!")
     @ManyToOne
     private Livro livro;
+
+    @NotNull(message = "A quantidade é obrigatória!")
+    @Min(value = 1, message = "A quantidade é inválida")
+    private Integer quantidade;
 
     /**
      * A FAZER>>>
@@ -39,11 +42,12 @@ public class Retirada {
 
     }
 
-    public Retirada(Long id, LocalDate data, Pessoa pessoa, Livro livro) {
+    public Retirada(Long id, LocalDate data, Pessoa pessoa, Livro livro, Integer quantidade) {
         this.id = id;
         this.data = data;
         this.pessoa = pessoa;
         this.livro = livro;
+        this.quantidade = quantidade;
     }
 
     public Long getId() {
@@ -76,5 +80,13 @@ public class Retirada {
 
     public void setLivro(Livro livro) {
         this.livro = livro;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
     }
 }
