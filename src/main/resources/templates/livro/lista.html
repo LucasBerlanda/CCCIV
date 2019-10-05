@@ -10,9 +10,9 @@
     <div class="offset4 ">
         <h2>Lista de livros</h2>
         <div class="well well-large">
-            <form th:action="@{pesquisaTituloLivro}" class="form-search">
+            <form th:action="@{/livro/pesquisaTituloLivro}" class="form-search">
                 <div class="input-append">
-                    <input type="text" class="span2 search-query form-control" name="pesquisaTitulo" placeholder="Pesquisar">
+                    <input type="text" class="span2 search-query form-control" name="titulo" placeholder="Pesquisar">
                     <button type="submit" class="btn"><i class="fas fa-search"></i></button>
                 </div>
             </form>
@@ -30,21 +30,23 @@
                 <th scope="col">Opções</th>
             </tr>
             </thead>
+
             <tbody>
-            <tr th:each="livro : ${lista}">
-                <td th:text="${livro.id}"></td>
-                <td th:text="${livro.titulo}"></td>
-                <td th:text="${livro.autores}"></td>
-                <td th:text="${livro.genero}"></td>
-                <td th:text="${livro.editora}"></td>
-                <td th:text="${livro.anoPublicacao}"></td>
-                <td th:text="${livro.quantidade}"></td>
-                <td>
-                    <a class="btn btn-outline-primary" th:href="@{cadastro/{codigo}(codigo=${livro.id})}"><i class="fa fa-pen"></i></a>
-                    <a class="btn btn-outline-danger modal-excluir" data-toggle="modal" data-target="#modal-excluir" id="deleteButton" th:href="@{excluir/{id}(id=${livro.id})}"><i class="fa fa-trash"></i></a>
-                </td>
-            </tr>
+                <tr th:each="livro : ${lista}">
+                    <td th:text="${livro.id}"></td>
+                    <td th:text="${livro.titulo}"></td>
+                    <td th:text="${livro.autores}"></td>
+                    <td th:text="${livro.genero}"></td>
+                    <td th:text="${livro.editora}"></td>
+                    <td th:text="${livro.anoPublicacao}"></td>
+                    <td th:text="${livro.quantidade}"></td>
+                    <td>
+                        <a class="btn btn-outline-primary" th:href="@{cadastro/{codigo}(codigo=${livro.id})}"><i class="fa fa-pen"></i></a>
+                        <a class="btn btn-outline-danger modal-excluir" data-toggle="modal" data-target="#modal-excluir" id="deleteButton" th:href="@{excluir/{id}(id=${livro.id})}"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
             </tbody>
+
         </table>
     </div>
     <div th:data-th-replace="@{import/modalExcluirLivro :: modal-excluir}"></div>

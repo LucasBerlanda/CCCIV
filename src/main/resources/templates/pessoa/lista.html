@@ -10,9 +10,9 @@
     <div class="offset4">
         <h2>Lista de pessoas</h2>
         <div class="well well-large">
-            <form th:action="@{pesquisaNome}" class="form-search">
+            <form th:action="@{/pessoa/pesquisaNome}" class="form-search" method="get">
                 <div class="input-append">
-                    <input type="text" class="span2 search-query form-control" name="pesquisaNome" placeholder="Pesquisar">
+                    <input type="text" class="span2 search-query form-control" name="nome" placeholder="Pesquisar">
                     <button type="submit" class="btn"><i class="fas fa-search"></i></button>
                 </div>
             </form>

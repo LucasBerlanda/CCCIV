@@ -55,6 +55,11 @@ public class LivroController {
         List<AutoCompleteDTO> lista = livroService.pesquisaLivro(keyword);
         return lista;
     }
+    @GetMapping("/pesquisaTituloLivro")
+    public String busca(String titulo, Model model) {
+        model.addAttribute("lista", livroService.livroByNome(titulo));
+        return "livro/lista";
+    }
 
 
 }

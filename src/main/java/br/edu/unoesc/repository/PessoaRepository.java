@@ -16,4 +16,7 @@ public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
     @Query("SELECT p.id as id, p.nome as label FROM Pessoa p where nome like %:keyword%")
     public List<AutoCompleteDTO> pesquisaCliente(@Param("keyword") String keyword);
 
+    @Query("SELECT p FROM Pessoa p where p.nome like ?1%")
+    List<Pessoa> pessoaByNome(String nomePessoa);
+
 }

@@ -2,6 +2,7 @@ package br.edu.unoesc.service;
 
 import br.edu.unoesc.model.AutoCompleteDTO;
 import br.edu.unoesc.model.Livro;
+import br.edu.unoesc.model.Pessoa;
 import br.edu.unoesc.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,11 @@ public class LivroServiceImplements implements LivroService {
     @Override
     public List<AutoCompleteDTO> pesquisaLivro(String keyword){
         return repository.pesquisaLivro(keyword);
+    }
+
+    @Override
+    public List<Livro> livroByNome(String titulo){
+        return repository.livroByNome(titulo);
     }
 
 }

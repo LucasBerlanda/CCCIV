@@ -43,4 +43,10 @@ public class PessoaServiceImplements implements PessoaService {
     public List<AutoCompleteDTO> pesquisaCliente(String keyword){
         return repository.pesquisaCliente(keyword);
     }
+
+    @Override
+    public List<Pessoa> pessoaByNome(String nomePessoa){
+        return repository.pessoaByNome(nomePessoa);
+    }
+
 }
