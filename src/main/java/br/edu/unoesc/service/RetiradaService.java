@@ -6,5 +6,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface RetiradaService extends Crud<Retirada> {
 
+    Integer temQuantidade(Long id);
 
 }

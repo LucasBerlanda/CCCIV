@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LivroServiceImplements implements LivroService {
@@ -39,6 +40,30 @@ public class LivroServiceImplements implements LivroService {
 
         return qtd;
     }
+
+    @Override
+    public Integer validadeQuantidade(Long id) {
+        Integer quantidade = 0;
+        quantidade = repository.quantidadeDoLivro(id);
+        return quantidade;
+    }
+
+    @Override
+    public Livro retirarLivro(Livro dado, Integer qtd) {
+        Integer qtdAtual = dado.getQuantidade();
+        dado.setQuantidade(qtdAtual - qtd);
+        repository.save(dado);
+        return dado;
+    }
+
+    @Override
+    public Livro devolverLivro(Livro dado, Integer qtd) {
+        Integer qtdAtual = dado.getQuantidade();
+        dado.setQuantidade(qtdAtual + qtd);
+        repository.save(dado);
+        return dado;
+    }
+
     @Override
     public List<AutoCompleteDTO> pesquisaLivro(String keyword){
         return repository.pesquisaLivro(keyword);
