@@ -1,11 +1,8 @@
 package br.edu.unoesc.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.xml.crypto.Data;
 import java.time.LocalDate;
 
 @Entity
@@ -20,10 +17,12 @@ public class Retirada {
 
     @NotNull(message = "A pessoa é obrigatória!")
     @ManyToOne
+    @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
 
     @NotNull(message = "O livro é obrigatório!")
     @ManyToOne
+    @JoinColumn(name = "livro_id")
     private Livro livro;
 
     @NotNull(message = "A quantidade é obrigatória!")
@@ -88,5 +87,16 @@ public class Retirada {
 
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
+    }
+
+    @Override
+    public String toString() {
+        return "Retirada{" +
+                "id=" + id +
+                ", data=" + data +
+                ", pessoa=" + pessoa +
+                ", livro=" + livro +
+                ", quantidade=" + quantidade +
+                '}';
     }
 }

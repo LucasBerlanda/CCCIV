@@ -47,13 +47,11 @@ public class Livro {
     @Column(name="quantidade", nullable=false)
     private Integer quantidade;
 
-    private Integer quantidadeDisponivel;
-
     public Livro() {
 
     }
 
-    public Livro(Long id, String titulo, String autores, String genero, String editora, Integer anoPublicacao, Integer quantidade, Integer quantidadeDisponivel) {
+    public Livro(Long id, String titulo, String autores, String genero, String editora, Integer anoPublicacao, Integer quantidade) {
         Id = id;
         this.titulo = titulo;
         this.autores = autores;
@@ -61,7 +59,6 @@ public class Livro {
         this.editora = editora;
         this.anoPublicacao = anoPublicacao;
         this.quantidade = quantidade;
-        this.quantidadeDisponivel = quantidadeDisponivel;
     }
 
     public Long getId() {
@@ -120,11 +117,10 @@ public class Livro {
         this.quantidade = quantidade;
     }
 
-    public Integer getQuantidadeDisponivel() {
-        return quantidadeDisponivel;
-    }
-
-    public void setQuantidadeDisponivel(Integer quantidadeDisponivel) {
-        this.quantidadeDisponivel = quantidadeDisponivel;
+    @Override
+    public String toString() {
+        return "Livro{" +
+                "titulo='" + titulo + '\'' +
+                '}';
     }
 }
