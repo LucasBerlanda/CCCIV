@@ -54,4 +54,11 @@ public class PessoaController {
         List<AutoCompleteDTO> lista = pessoaService.pesquisaCliente(keyword);
         return lista;
     }
+
+    @GetMapping("/pesquisaNome")
+    public String busca(String nome, Model model) {
+        model.addAttribute("lista", pessoaService.pessoaByNome(nome));
+        System.out.println(pessoaService.pessoaByNome(nome));
+        return "pessoa/lista";
+    }
 }

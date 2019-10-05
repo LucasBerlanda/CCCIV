@@ -11,6 +11,8 @@ public interface PessoaService extends Crud<Pessoa> {
 
     public List<AutoCompleteDTO> pesquisaCliente(String keyword);
 
+    public List<Pessoa> pessoaByNome(String nomePessoa);
+
     Integer quantidade();
 
 }
