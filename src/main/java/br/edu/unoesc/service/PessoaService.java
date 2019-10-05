@@ -15,4 +15,6 @@ public interface PessoaService extends Crud<Pessoa> {
 
     Integer quantidade();
 
+    public Pessoa getById(Long id);
+
 }

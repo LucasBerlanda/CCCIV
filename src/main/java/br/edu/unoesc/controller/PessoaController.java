@@ -8,45 +8,58 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import br.edu.unoesc.model.Pessoa;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
-@RequestMapping("/pessoa")
 public class PessoaController {
 
     @Autowired
     private PessoaService pessoaService;
 
-    @GetMapping("/cadastro")
+    @GetMapping("/pessoa/cadastro")
     public String cadastro(Model model){
         model.addAttribute("pessoa", new Pessoa());
         return "pessoa/cadastrar";
     }
 
-    @PostMapping("/cadastro")
-    public String cadastro(@Valid @ModelAttribute("pessoa") Pessoa pessoa, BindingResult result, Model model) {
+    @PostMapping("/pessoa/cadastro")
+    public String cadastro(@Valid Pessoa pessoa, BindingResult result, Model model) {
         if(result.hasErrors()){
             model.addAttribute("pessoa", pessoa);
             return "pessoa/cadastrar";
         }
         pessoaService.salvar(pessoa);
+        return "redirect:/";
+    }
+
+    @GetMapping("/pessoa/editar/{id}")
+    public String editar(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("pessoa", new Pessoa());
+        Pessoa pessoa = pessoaService.getById(id);
+        model.addAttribute("pessoa", pessoaService.getById(id));
         return "pessoa/cadastrar";
     }
-    @GetMapping("/lista")
+
+    @GetMapping("/pessoa/lista")
     public String lista(Model model) {
         List<Pessoa> pessoas = pessoaService.listar();
         model.addAttribute("lista", pessoas);
         return "pessoa/lista";
     }
-    @GetMapping("/excluir/{codigo}")
+
+
+    @GetMapping("/pessoa/excluir/{codigo}")
     public String excluir(@PathVariable Long codigo) {
         pessoaService.excluir(codigo);
         return "redirect:/pessoa/lista";
     }
 
+    // manda json pra tela de retirada no combobox
     @RequestMapping(value="clientes", method = RequestMethod.GET)
     @ResponseBody
     public List<AutoCompleteDTO> clientes(HttpServletRequest request){
@@ -54,11 +67,22 @@ public class PessoaController {
         List<AutoCompleteDTO> lista = pessoaService.pesquisaCliente(keyword);
         return lista;
     }
-
-    @GetMapping("/pesquisaNome")
+// busca pessoa por nome para lista de pessoas
+    @GetMapping("/pessoa/pesquisaNome")
     public String busca(String nome, Model model) {
         model.addAttribute("lista", pessoaService.pessoaByNome(nome));
         System.out.println(pessoaService.pessoaByNome(nome));
         return "pessoa/lista";
     }
+
+// tinha feito assim o editar mas mudei
+//    @GetMapping("/pessoa/editar/{id}")
+//    public ModelAndView editar(@PathVariable("id") Long id) {
+//        ModelAndView model = new ModelAndView("pessoa/cadastrar");
+//        Pessoa pessoa = pessoaService.getById(id);
+//        model.addObject("pessoa", pessoa);
+//        return model;
+//    }
+
+
 }

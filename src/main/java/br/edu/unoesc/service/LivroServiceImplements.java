@@ -30,6 +30,7 @@ public class LivroServiceImplements implements LivroService {
         return this.repository.findAll();
     }
 
+
     @Override
     public Integer quantidade() {
         Integer qtd = 0;

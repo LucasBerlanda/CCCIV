@@ -16,6 +16,7 @@ public class PessoaServiceImplements implements PessoaService {
 
     @Override
     public void salvar(Pessoa dado) {
+
         repository.save(dado);
     }
 
@@ -48,6 +49,11 @@ public class PessoaServiceImplements implements PessoaService {
     public List<Pessoa> pessoaByNome(String nomePessoa){
         return repository.pessoaByNome(nomePessoa);
     }
+
+    public Pessoa getById(Long id){
+        return repository.getById(id);
+    }
+
 
 
 }

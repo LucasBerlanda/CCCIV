@@ -38,7 +38,7 @@
                 <td th:text="${pessoa.email}"></td>
                 <td th:text="${pessoa.telefone}"></td>
                 <td>
-                    <a class="btn btn-outline-primary" th:href="@{cadastro/{codigo}(codigo=${pessoa.id})}"><i class="fa fa-pen"></i></a>
+                    <a class="btn btn-outline-primary" th:href="@{/pessoa/editar/{id}(id=${pessoa.id})}"><i class="fa fa-pen"></i></a>
                     <a class="btn btn-outline-danger modal-excluir" data-toggle="modal" data-target="#modal-excluir" id="deleteButton" th:href="@{excluir/{id}(id=${pessoa.id})}"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>

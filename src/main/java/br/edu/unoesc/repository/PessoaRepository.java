@@ -8,10 +8,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 // como desativar o open session in view no application properties
 @Repository
 public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
+
+    Pessoa getById(Long id);
 
     @Query("SELECT p.id as id, p.nome as label FROM Pessoa p where nome like %:keyword%")
     public List<AutoCompleteDTO> pesquisaCliente(@Param("keyword") String keyword);

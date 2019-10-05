@@ -27,4 +27,5 @@ public class DevolucaoServiceImplements implements DevolucaoService {
     public List listar() {
         return this.repository.findAll();
     }
+
 }
