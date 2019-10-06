@@ -23,5 +23,6 @@ public interface LivroService extends Crud<Livro> {
 
     Livro devolverLivro(Livro dado, Integer qtd);
 
+    public Livro getById(Long id);
 }
 

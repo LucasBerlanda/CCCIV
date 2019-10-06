@@ -14,6 +14,8 @@ import java.util.List;
 @Repository
 public interface LivroRepository extends JpaRepository<Livro, Long> {
 
+    Livro getById(Long id);
+
     @Query("SELECT l.id as id, l.titulo as label FROM Livro l where titulo like %:keyword%")
     public List<AutoCompleteDTO> pesquisaLivro(@Param("keyword") String keyword);
 

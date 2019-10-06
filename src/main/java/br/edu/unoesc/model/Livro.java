@@ -12,7 +12,7 @@ public class Livro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @NotNull
     @NotEmpty(message = "O título é obrigatório!")
@@ -52,7 +52,7 @@ public class Livro {
     }
 
     public Livro(Long id, String titulo, String autores, String genero, String editora, Integer anoPublicacao, Integer quantidade) {
-        Id = id;
+        this.id = id;
         this.titulo = titulo;
         this.autores = autores;
         this.genero = genero;
@@ -62,11 +62,11 @@ public class Livro {
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        id = id;
     }
 
     public String getTitulo() {
