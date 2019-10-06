@@ -34,9 +34,9 @@ public class RetiradaServiceImplements implements RetiradaService {
     }
 
     @Override
-    public Integer temQuantidade(Long id) {
+    public Integer temQuantidade(Long idPessoa, Long idLivro) {
         Integer quantidade = 0;
-        quantidade = repository.temQuantidade(id);
+        quantidade = repository.temQuantidade(idPessoa, idLivro);
         return quantidade;
     }
 }

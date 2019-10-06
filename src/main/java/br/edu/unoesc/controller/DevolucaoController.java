@@ -23,8 +23,10 @@ public class DevolucaoController {
     @Autowired
     private DevolucaoService devolucaoService;
 
+    @Autowired
     private LivroService livroService;
 
+    @Autowired
     private RetiradaService retiradaService;
 
     @GetMapping("/cadastro")
@@ -40,15 +42,15 @@ public class DevolucaoController {
         }
         // id do livro selecionado na tela
         Long idLivro = devolucao.getLivro().getId();
-        System.out.println(idLivro+" id do livro selecionado");
-        System.out.println(devolucao.getQuantidade()+" quantidade digitada do livro");
-        if(retiradaService.temQuantidade(idLivro)>= devolucao.getQuantidade()){
+        Long idPessoa = devolucao.getPessoa().getId();
+        if(retiradaService.temQuantidade(idPessoa, idLivro)>= devolucao.getQuantidade()){
             devolucao.setData(LocalDate.now());
             devolucaoService.salvar(devolucao);
             livroService.devolverLivro(devolucao.getLivro(), devolucao.getQuantidade());
             return "devolucao/cadastrar";
         }
         else {
+            // voltar para a tela mostrando o erro de quantidade invalida
             System.out.println("voce nao tem essa quantidade de livros para devolver");
             return "devolucao/cadastrar";
         }
