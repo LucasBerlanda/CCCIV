@@ -65,6 +65,11 @@ public class LivroServiceImplements implements LivroService {
     }
 
     @Override
+    public Livro getById(Long id) {
+        return repository.getById(id);
+    }
+
+    @Override
     public List<AutoCompleteDTO> pesquisaLivro(String keyword){
         return repository.pesquisaLivro(keyword);
     }
@@ -73,5 +78,7 @@ public class LivroServiceImplements implements LivroService {
     public List<Livro> livroByNome(String titulo){
         return repository.livroByNome(titulo);
     }
+
+
 
 }

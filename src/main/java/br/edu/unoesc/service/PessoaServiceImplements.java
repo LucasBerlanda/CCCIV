@@ -31,6 +31,7 @@ public class PessoaServiceImplements implements PessoaService {
         return this.repository.findAll();
     }
 
+
     @Override
     public Integer quantidade() {
         Integer qtd = 0;
@@ -53,7 +54,5 @@ public class PessoaServiceImplements implements PessoaService {
     public Pessoa getById(Long id){
         return repository.getById(id);
     }
-
-
 
 }
