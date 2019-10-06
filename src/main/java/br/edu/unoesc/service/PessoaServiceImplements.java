@@ -5,6 +5,8 @@ import br.edu.unoesc.model.Pessoa;
 import br.edu.unoesc.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,18 +17,20 @@ public class PessoaServiceImplements implements PessoaService {
     private PessoaRepository repository;
 
     @Override
+    @Transactional
     public void salvar(Pessoa dado) {
-
         repository.save(dado);
     }
 
     @Override
+    @Transactional
     public void excluir(Long dado) {
         repository.deleteById(dado);
 
     }
 
     @Override
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public List listar() {
         return this.repository.findAll();
     }
@@ -42,11 +46,13 @@ public class PessoaServiceImplements implements PessoaService {
     }
 
     @Override
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public List<AutoCompleteDTO> pesquisaCliente(String keyword){
         return repository.pesquisaCliente(keyword);
     }
 
     @Override
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public List<Pessoa> pessoaByNome(String nomePessoa){
         return repository.pessoaByNome(nomePessoa);
     }

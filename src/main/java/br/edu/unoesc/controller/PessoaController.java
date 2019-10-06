@@ -2,18 +2,16 @@ package br.edu.unoesc.controller;
 
 import br.edu.unoesc.model.AutoCompleteDTO;
 import br.edu.unoesc.service.PessoaService;
+import br.edu.unoesc.service.PessoaServiceImplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import br.edu.unoesc.model.Pessoa;
-import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class PessoaController {
@@ -52,7 +50,6 @@ public class PessoaController {
         return "pessoa/lista";
     }
 
-
     @GetMapping("/pessoa/excluir/{codigo}")
     public String excluir(@PathVariable Long codigo) {
         pessoaService.excluir(codigo);
@@ -83,6 +80,4 @@ public class PessoaController {
 //        model.addObject("pessoa", pessoa);
 //        return model;
 //    }
-
-
 }

@@ -4,8 +4,10 @@ import br.edu.unoesc.model.Retirada;
 import br.edu.unoesc.repository.RetiradaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -15,11 +17,13 @@ public class RetiradaServiceImplements implements RetiradaService {
     private RetiradaRepository repository;
 
     @Override
+    @Transactional
     public void salvar(Retirada dado) {
         repository.save(dado);
     }
 
     @Override
+    @Transactional
     public void excluir(Long dadoId) {
         repository.deleteById(dadoId);
     }

@@ -15,45 +15,45 @@
                     <input type="hidden" name="id" th:field="*{id}">
                     <div class="form-group span8">
                         <div>
-                            <label>Titulo</label>
-                            <input type="text" th:field="*{titulo}" name="titulo" class="form-control span4" placeholder="Nome">
+                            <label>Título</label>
+                            <input type="text" name="titulo" th:field="*{titulo}" class="form-control span4" placeholder="Título">
                         </div>
                         <label class="label label-important" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}">Erro</label>
                     </div>
                     <div class="form-group span8">
                         <div>
+                            <label>Autor</label>
+                            <input type="text" class="form-control span4" th:field="*{autores}" name="autores" placeholder="Autor">
+                        </div>
+                        <label class="label label-important" th:if="${#fields.hasErrors('autores')}" th:errors="*{autores}">Erro</label>
+                    </div>
+                    <div class="form-group span8">
+                        <div>
                             <label>Genero</label>
-                            <input type="text" th:field="*{genero}" name="genero" class="form-control span4" placeholder="Genero">
+                            <input type="text" class="form-control span4" th:field="*{genero}" name="genero" placeholder="Genero" >
                         </div>
                         <label class="label label-important" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}">Erro</label>
                     </div>
                     <div class="form-group span8">
                         <div>
                             <label>Editora</label>
-                            <input type="text" th:field="*{editora}" name="editora" class="form-control span4" placeholder="Genero">
+                            <input type="text" class="form-control span4" th:field="*{editora}" name="editora" placeholder="Editora">
                         </div>
                         <label class="label label-important" th:if="${#fields.hasErrors('editora')}" th:errors="*{editora}">Erro</label>
                     </div>
                     <div class="form-group span8">
                         <div>
-                            <label>Autores</label>
-                            <input type="text" th:field="*{autores}" name="autores" class="form-control span4" placeholder="Autores">
-                        </div>
-                            <label class="label label-important" th:if="${#fields.hasErrors('autores')}" th:errors="*{autores}">Erro</label>
-                    </div>
-                    <div class="form-group span8">
-                        <div>
                             <label>Ano de publicação</label>
-                            <input type="number" th:field="*{anoPublicacao}" name="anoPublicacao" class="form-control span4" placeholder="Ano de Publicação">
+                            <input type="number" class="form-control span4" th:field="*{anoPublicacao}" name="anoPublicacao" placeholder="Ano de publicação">
                         </div>
-                            <label class="label label-important" th:if="${#fields.hasErrors('anoPublicacao')}" th:errors="*{anoPublicacao}">Erro</label>
+                        <label class="label label-important" th:if="${#fields.hasErrors('anoPublicacao')}" th:errors="*{anoPublicacao}">Erro</label>
                     </div>
                     <div class="form-group span8">
                         <div>
                             <label>Quantidade</label>
-                            <input type="number" th:field="*{quantidade}" name="quantidade" class="form-control span4" placeholder="Quantidade">
+                            <input type="number" class="form-control span4" th:field="*{quantidade}" name="quantidade" placeholder="Quantidade">
                         </div>
-                            <label class="label label-important" th:if="${#fields.hasErrors('quantidade')}" th:errors="*{quantidade}">Erro</label>
+                        <label class="label label-important" th:if="${#fields.hasErrors('quantidade')}" th:errors="*{quantidade}">Erro</label>
                     </div>
                     <div class="form-group span8">
                         <button type="submit" class="btn btn-success">Salvar</button>

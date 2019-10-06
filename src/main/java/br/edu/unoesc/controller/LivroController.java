@@ -2,13 +2,13 @@ package br.edu.unoesc.controller;
 
 import br.edu.unoesc.model.AutoCompleteDTO;
 import br.edu.unoesc.model.Livro;
+import br.edu.unoesc.model.Pessoa;
 import br.edu.unoesc.service.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -20,8 +20,9 @@ public class LivroController {
     @Autowired
     private LivroService livroService;
 
+
     @GetMapping("/livro/cadastro")
-    public String cadastro(Model model) {
+    public String cadastro(Model model){
         model.addAttribute("livro", new Livro());
         return "livro/cadastrar";
     }
@@ -35,12 +36,6 @@ public class LivroController {
         livroService.salvar(livro);
         return "redirect:/";
     }
-    @GetMapping("/livro/lista")
-    public String lista(Model model) {
-        List<Livro> livros = livroService.listar();
-        model.addAttribute("lista", livros);
-        return "livro/lista";
-    }
 
     @GetMapping("/livro/editar/{id}")
     public String editar(@PathVariable("id") Long id, Model model) {
@@ -49,6 +44,13 @@ public class LivroController {
         System.out.println("EDITAR" + livro);
         model.addAttribute("livro", livroService.getById(id));
         return "livro/cadastrar";
+    }
+
+    @GetMapping("/livro/lista")
+    public String lista(Model model) {
+        List<Livro> livros = livroService.listar();
+        model.addAttribute("lista", livros);
+        return "livro/lista";
     }
 
     @GetMapping("/livro/excluir/{codigo}")
