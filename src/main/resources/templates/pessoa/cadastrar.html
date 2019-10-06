@@ -15,7 +15,7 @@
                     <div class="form-group span8">
                         <div>
                             <label>Nome</label>
-                            <input type="text" name="nome" th:field="*{nome}" class="form-control span4">
+                            <input type="text" name="nome" th:field="*{nome}" class="form-control span4" placeholder="Nome">
                         </div>
                     <label class="label label-important" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro</label>
                     </div>

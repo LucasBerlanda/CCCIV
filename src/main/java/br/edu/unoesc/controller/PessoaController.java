@@ -60,7 +60,7 @@ public class PessoaController {
     }
 
     // manda json pra tela de retirada no combobox
-    @RequestMapping(value="clientes", method = RequestMethod.GET)
+    @RequestMapping(value="/pessoa/clientes", method = RequestMethod.GET)
     @ResponseBody
     public List<AutoCompleteDTO> clientes(HttpServletRequest request){
         String keyword = request.getParameter("term");
