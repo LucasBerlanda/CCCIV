@@ -70,9 +70,14 @@ public class LivroServiceImplements implements LivroService {
         return repository.getById(id);
     }
 
+    //busca os livros disponíveis
     @Override
     public List<Livro> buscaLivrosDisponiveis() {
         return repository.livrosDisponiveis();
+    }
+    //busca os livros disponíveis por titulo
+    public List<Livro> livrosDisponiveisByTitulo(String titulo){
+        return repository.livrosDisponiveisByTitulo(titulo);
     }
 
     @Override
@@ -81,6 +86,7 @@ public class LivroServiceImplements implements LivroService {
         return repository.pesquisaLivro(keyword);
     }
 
+    //busca livros por titulo
     @Override
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public List<Livro> livroByNome(String titulo){

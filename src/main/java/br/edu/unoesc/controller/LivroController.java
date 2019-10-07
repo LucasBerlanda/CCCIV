@@ -4,6 +4,7 @@ import br.edu.unoesc.model.AutoCompleteDTO;
 import br.edu.unoesc.model.Livro;
 import br.edu.unoesc.model.Pessoa;
 import br.edu.unoesc.service.LivroService;
+import br.edu.unoesc.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,9 @@ public class LivroController {
 
     @Autowired
     private LivroService livroService;
+
+    @Autowired
+    private PessoaService pessoaService;
 
 
     @GetMapping("/livro/cadastro")
@@ -69,6 +73,14 @@ public class LivroController {
     public String busca(String titulo, Model model) {
         model.addAttribute("lista", livroService.livroByNome(titulo));
         return "livro/lista";
+    }
+
+    @GetMapping("/livro/pesquisaLivrosDisponiveis")
+    public String buscaLivrosDisponiveis(String titulo, Model model) {
+        model.addAttribute("lista", livroService.livrosDisponiveisByTitulo(titulo));
+        model.addAttribute("pessoasCadastradas", pessoaService.quantidade());
+        model.addAttribute("livrosCadastradas", livroService.quantidade());
+        return "index";
     }
 
 

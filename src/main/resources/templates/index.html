@@ -24,7 +24,14 @@
                     </div>
                 <div class="module">
                     <div class="module-head">
-                        <h3>Livros Disponíveis</h3>
+                        <form th:action="@{/livro/pesquisaLivrosDisponiveis}" class="form-search pull-right pull" method="get">
+                            <div class="input-append">
+                                <input type="text" class="span2 search-query form-control" name="titulo" placeholder="Pesquisar">
+                                <button type="submit" class="btn"><i class="fas fa-search"></i></button>
+                            </div>
+                        </form>
+                        <h3 class="">Livros Disponíveis</h3>
+                        <small><a th:href="@{/}">Todos os disponíveis</a></small>
                     </div>
                     <div class="table">
                         <table class="table table-striped table-hover">
