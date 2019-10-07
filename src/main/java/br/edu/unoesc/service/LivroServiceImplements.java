@@ -34,7 +34,6 @@ public class LivroServiceImplements implements LivroService {
         return this.repository.findAll();
     }
 
-
     @Override
     public Integer quantidade() {
         Integer qtd = 0;
@@ -72,6 +71,11 @@ public class LivroServiceImplements implements LivroService {
     }
 
     @Override
+    public List<Livro> buscaLivrosDisponiveis() {
+        return repository.livrosDisponiveis();
+    }
+
+    @Override
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public List<AutoCompleteDTO> pesquisaLivro(String keyword){
         return repository.pesquisaLivro(keyword);
@@ -82,7 +86,5 @@ public class LivroServiceImplements implements LivroService {
     public List<Livro> livroByNome(String titulo){
         return repository.livroByNome(titulo);
     }
-
-
 
 }

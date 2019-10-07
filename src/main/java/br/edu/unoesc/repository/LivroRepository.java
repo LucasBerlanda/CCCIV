@@ -24,4 +24,7 @@ public interface LivroRepository extends JpaRepository<Livro, Long> {
 
     @Query("SELECT l FROM Livro l where l.titulo like ?1%")
     List<Livro> livroByNome(String titulo);
+
+    @Query("SELECT l from Livro l where l.quantidade >= 1")
+    public List<Livro> livrosDisponiveis();
 }
