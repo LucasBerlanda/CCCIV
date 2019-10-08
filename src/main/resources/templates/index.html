@@ -24,7 +24,7 @@
                     </div>
                 <div class="module">
                     <div class="module-head">
-                        <form th:action="@{/livro/pesquisaLivrosDisponiveis}" class="form-search pull-right pull" method="get">
+                        <form th:action="@{/livro/pesquisaLivrosDisponiveis}" class="form-search pull-right" method="get">
                             <div class="input-append">
                                 <input type="text" class="span2 search-query form-control" name="titulo" placeholder="Pesquisar">
                                 <button type="submit" class="btn"><i class="fas fa-search"></i></button>
@@ -72,11 +72,7 @@
             <!--/.container-->
         </div>
         <!--/.wrapper-->
-        <div class="footer">
-            <div class="container">
-                <b class="copyright">&copy; 2014 Edmin - EGrappler.com </b>All rights reserved.
-            </div>
-        </div>
+<footer th:data-th-replace="@{import/rodape :: rodape}" ></footer>
 </div>
 <div th:data-th-replace="@{import/scripts :: script}" ></div>
 </body>

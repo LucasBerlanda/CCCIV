@@ -10,8 +10,8 @@
     <div class="span4" data-th-replace="import/menuLateral :: menuLateral"></div>
         <div class="">
             <div class="span8">
-                <h2 class="span8">Cadastro de livros</h2>
                 <form th:action="@{/livro/cadastro}" method="post" th:object="${livro}" class="span8">
+                    <h2 class="span8">Cadastro de livros</h2>
                     <input type="hidden" name="id" th:field="*{id}">
                     <div class="form-group span8">
                         <div>
