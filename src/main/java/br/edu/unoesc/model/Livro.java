@@ -41,8 +41,7 @@ public class Livro {
     private Integer anoPublicacao;
 
     @NotNull(message = "A quantidade é obrigatória!")
-    @Min(value = 1, message = "A quantidade é inválida")
-    @Column(name="quantidade", nullable=false)
+    @Min(value = 0, message = "A quantidade é inválida")
     private Integer quantidade;
 
     public Livro() {
