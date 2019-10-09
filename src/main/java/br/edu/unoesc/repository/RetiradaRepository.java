@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 @Repository
 public interface RetiradaRepository extends JpaRepository<Retirada, Long> {
@@ -13,4 +15,6 @@ public interface RetiradaRepository extends JpaRepository<Retirada, Long> {
     @Query(value = "Select sum(r.quantidade) from Retirada r where pessoa_id = :pessoa_id && livro_id = :livro_id", nativeQuery = true)
     public Integer temQuantidade(@Param("pessoa_id") Long id, @Param("livro_id") Long idLivro);
 
+    @Query("SELECT R FROM Retirada R where R.id = :id")
+    public Retirada retiradaPorID(@Param("id") Long id);
 }

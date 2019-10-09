@@ -1,5 +1,6 @@
 package br.edu.unoesc.service;
 
+import br.edu.unoesc.model.Livro;
 import br.edu.unoesc.model.Retirada;
 import br.edu.unoesc.repository.RetiradaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,4 +40,14 @@ public class RetiradaServiceImplements implements RetiradaService {
         quantidade = repository.temQuantidade(idPessoa, idLivro);
         return quantidade;
     }
+
+    @Override
+    public Retirada devolverLivroDaRetirada(Long idLivro, Integer qtd) {
+        Retirada retirada = repository.retiradaPorID(idLivro);
+        Integer qtdAtual = retirada.getQuantidade();
+        retirada.setQuantidade(qtdAtual - qtd);
+        repository.save(retirada);
+        return retirada;
+    }
+
 }

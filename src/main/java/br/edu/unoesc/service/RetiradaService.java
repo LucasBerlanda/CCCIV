@@ -8,4 +8,6 @@ public interface RetiradaService extends Crud<Retirada> {
 
     Integer temQuantidade(Long idPessoa, Long idLivro);
 
+    Retirada devolverLivroDaRetirada(Long idLivro, Integer qtd);
+
 }

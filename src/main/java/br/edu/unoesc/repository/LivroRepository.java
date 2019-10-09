@@ -30,4 +30,7 @@ public interface LivroRepository extends JpaRepository<Livro, Long> {
 
     @Query("SELECT l from Livro l where l.quantidade >= 1 and l.titulo like ?1%")
     public List<Livro> livrosDisponiveisByTitulo(String titulo);
+
+    @Query(value = "SELECT SUM(l.quantidade) from LIVRO l", nativeQuery = true)
+    public Integer quantidadeTotal();
 }

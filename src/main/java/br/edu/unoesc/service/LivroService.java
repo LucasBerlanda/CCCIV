@@ -19,6 +19,8 @@ public interface LivroService extends Crud<Livro> {
 
     Integer validadeQuantidade(Long id);
 
+    Integer quantidadeTotal();
+
     Livro retirarLivro(Livro dado, Integer qtd);
 
     Livro devolverLivro(Livro dado, Integer qtd);
@@ -28,5 +30,6 @@ public interface LivroService extends Crud<Livro> {
     public List<Livro> buscaLivrosDisponiveis();
 
     public List<Livro> livrosDisponiveisByTitulo(String titulo);
+
 }
 

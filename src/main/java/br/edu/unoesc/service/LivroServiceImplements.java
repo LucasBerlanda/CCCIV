@@ -51,6 +51,11 @@ public class LivroServiceImplements implements LivroService {
     }
 
     @Override
+    public Integer quantidadeTotal() {
+        return repository.quantidadeTotal();
+    }
+
+    @Override
     public Livro retirarLivro(Livro dado, Integer qtd) {
         Integer qtdAtual = dado.getQuantidade();
         dado.setQuantidade(qtdAtual - qtd);

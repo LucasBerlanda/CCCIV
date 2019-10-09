@@ -60,6 +60,8 @@ public class DevolucaoController {
                 devolucao.setData(LocalDate.now());
                 devolucaoService.salvar(devolucao);
                 livroService.devolverLivro(devolucao.getLivro(), devolucao.getQuantidade());
+                System.out.println(devolucao.getLivro().getId());
+                retiradaService.devolverLivroDaRetirada(devolucao.getLivro().getId(), devolucao.getQuantidade());
                 return "devolucao/cadastrar";
             }
         } catch(Exception e) {

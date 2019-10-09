@@ -21,6 +21,7 @@ public class IndexController{
     public String index(Model model){
         model.addAttribute("pessoasCadastradas", pessoaService.quantidade());
         model.addAttribute("livrosCadastradas", livroService.quantidade());
+        model.addAttribute("quantidadeTotalLivros", livroService.quantidadeTotal());
         model.addAttribute("lista", livroService.buscaLivrosDisponiveis());
         return "index";
     }
@@ -30,8 +31,8 @@ public class IndexController{
  * mini-biblioteca:
  * cadastro de exemplares -> ok
  * cadastro de pessoas -> ok
- * retiradas e devoluções de exemplares por pessoas -> mais ou menos
- * saldo de exemplares - nao deixar retirar livro que nao tem disponibilidade -> quase
+ * retiradas e devoluções de exemplares por pessoas -> falta fazer validaçoes
+ * saldo de exemplares - nao deixar retirar livro que nao tem disponibilidade -> falta fazer validações
  * lista de exemplares emprestados
  * lista de livros disponíveis -> ok
  */

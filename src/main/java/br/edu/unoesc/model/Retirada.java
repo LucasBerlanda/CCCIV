@@ -26,7 +26,7 @@ public class Retirada {
     private Livro livro;
 
     @NotNull(message = "A quantidade é obrigatória!")
-    @Min(value = 1, message = "A quantidade é inválida")
+//    @Min(value = 1, message = "A quantidade é inválida")
     private Integer quantidade;
 
     /**
