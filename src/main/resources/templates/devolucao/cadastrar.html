@@ -8,7 +8,10 @@
 <div class="">
     <div class="span4" data-th-replace="import/menuLateral :: menuLateral"></div>
     <div class="span8">
-        <label th:text="*{erro}"></label>
+        <div class="alert alert-block span8" th:if="${erro}">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <h5 th:text="*{erro}"></h5>
+        </div>
         <form th:action="@{/devolucao/cadastro}" method="post" id="form" th:object="${devolucao}" class="span8">
             <h2 class="span8">Devolução de livros</h2>
             <div class="form-group span8">

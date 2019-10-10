@@ -1,13 +1,10 @@
 package br.edu.unoesc.service;
 
-import br.edu.unoesc.model.Livro;
 import br.edu.unoesc.model.Retirada;
 import br.edu.unoesc.repository.RetiradaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -34,6 +31,8 @@ public class RetiradaServiceImplements implements RetiradaService {
         return this.repository.findAll();
     }
 
+
+
     @Override
     public Integer temQuantidade(Long idPessoa, Long idLivro) {
         Integer quantidade = 0;
@@ -48,6 +47,21 @@ public class RetiradaServiceImplements implements RetiradaService {
         retirada.setQuantidade(qtdAtual - qtd);
         repository.save(retirada);
         return retirada;
+    }
+
+    @Override
+    public List<Object> livrosEmprestados() {
+        return repository.livrosEmprestados();
+    }
+
+    @Override
+    public List<Retirada> livrosEmprestadosByCliente(String nome) {
+        return repository.livrosEmprestadosByCliente(nome);
+    }
+
+    @Override
+    public List<Retirada> livrosEmprestadosByLivro(String titulo) {
+        return repository.livrosEmprestadosByLivro(titulo);
     }
 
 }

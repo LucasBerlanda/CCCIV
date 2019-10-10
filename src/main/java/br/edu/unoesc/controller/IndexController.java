@@ -25,6 +25,7 @@ public class IndexController{
         model.addAttribute("lista", livroService.buscaLivrosDisponiveis());
         return "index";
     }
+
 }
 /**
  * grupos de 3
@@ -33,6 +34,7 @@ public class IndexController{
  * cadastro de pessoas -> ok
  * retiradas e devoluções de exemplares por pessoas -> falta fazer validaçoes
  * saldo de exemplares - nao deixar retirar livro que nao tem disponibilidade -> falta fazer validações
- * lista de exemplares emprestados
+ * lista de exemplares emprestados -> ok
  * lista de livros disponíveis -> ok
+ * baeldung
  */

@@ -1,10 +1,9 @@
 package br.edu.unoesc.controller;
 
-import br.edu.unoesc.model.AutoCompleteDTO;
-import br.edu.unoesc.model.Livro;
-import br.edu.unoesc.model.Pessoa;
+import br.edu.unoesc.model.*;
 import br.edu.unoesc.service.LivroService;
 import br.edu.unoesc.service.PessoaService;
+import br.edu.unoesc.service.RetiradaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +22,9 @@ public class LivroController {
 
     @Autowired
     private PessoaService pessoaService;
+
+    @Autowired
+    private RetiradaService retiradaService;
 
 
     @GetMapping("/livro/cadastro")
@@ -83,5 +85,25 @@ public class LivroController {
         return "index";
     }
 
+    @GetMapping("/livro/livrosEmprestados")
+    public String livrosEmprestados(Model model){
+        List<Object> lista = retiradaService.livrosEmprestados();
+        model.addAttribute("lista", lista);
+        System.out.println(retiradaService.livrosEmprestados().toString());
+        for(int i = 0; i<=lista.size(); i++){
+            System.out.println(lista);
+        }
+        return "livro/livrosEmprestados";
+    }
 
+    @GetMapping("/livro/livroEmprestadoByCliente")
+    public String livroDisponivelByCliente(String cliente, Model model){
+        model.addAttribute("lista", retiradaService.livrosEmprestadosByCliente(cliente));
+        return "livro/livrosEmprestados";
+    }
+    @GetMapping("/livro/livroEmprestadoByLivro")
+    public String livroDisponivelTitulo(String titulo, Model model){
+        model.addAttribute("lista", retiradaService.livrosEmprestadosByLivro(titulo));
+        return "livro/livrosEmprestados";
+    }
 }
