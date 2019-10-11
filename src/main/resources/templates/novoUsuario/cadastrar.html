@@ -28,6 +28,13 @@
                 </div>
                 <div class="form-group span8">
                     <div>
+                        <label>Numero de Telefone</label>
+                        <input type="text" class="form-control span4" th:field="*{telefone}" name="telefone" placeholder="Numero de Telefone">
+                    </div>
+                    <label class="label label-important" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}">Erro</label>
+                </div>
+                <div class="form-group span8">
+                    <div>
                         <label>Cpf</label>
                         <input type="text" class="form-control span4" th:field="*{cpf}" name="cpf" placeholder="Cpf" >
                     </div>
