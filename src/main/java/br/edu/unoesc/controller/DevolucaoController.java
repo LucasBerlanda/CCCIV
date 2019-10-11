@@ -65,13 +65,10 @@ public class DevolucaoController {
                 return "devolucao/cadastrar";
             }
         } catch(Exception e) {
-               String erro = e.getMessage();
                e.printStackTrace();
-               System.out.println(erro);
                model.addAttribute("erro", "O livro ou a o cliente ou a quantidade " +
                        "a ser devolvida não é correta!");
         }
-        System.out.println("Depois do cath");
         return "devolucao/cadastrar";
     }
 }

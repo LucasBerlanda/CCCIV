@@ -14,15 +14,18 @@ public class Devolucao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;
 
     @NotNull(message = "A pessoa é obrigatória!")
     @ManyToOne
-    @JoinColumn(name = "pessoa_id")    private Pessoa pessoa;
+    @JoinColumn(name = "pessoa_id")
+    private Pessoa pessoa;
 
     @NotNull(message = "O livro é obrigatório!")
     @ManyToOne
-    @JoinColumn(name = "livro_id")    private Livro livro;
+    @JoinColumn(name = "livro_id")
+    private Livro livro;
 
     @NotNull(message = "A quantidade é obrigatória!")
     @Min(value = 1, message = "A quantidade é inválida")
