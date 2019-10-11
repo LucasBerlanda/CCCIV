@@ -19,4 +19,5 @@ public class CrudApplication {
  * retiradas e devoluções de exemplares por pessoas
  * saldo de exemplares - nao deixar retirar livro que nao tem disponibilidade
  * lista de exemplares emprestados
+ * // como desativar o open session in view no application properties
  */
