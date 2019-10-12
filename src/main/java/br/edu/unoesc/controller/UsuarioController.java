@@ -3,6 +3,9 @@ package br.edu.unoesc.controller;
 import br.edu.unoesc.model.Usuario;
 import br.edu.unoesc.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,6 +32,9 @@ public class UsuarioController {
             model.addAttribute("usuario", usuario);
             return "/novoUsuario/cadastrar";
         }
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String senha = passwordEncoder.encode(usuario.getSenha());
+        usuario.setSenha(senha);
         usuarioService.salvar(usuario);
         return "redirect:/login";
     }
