@@ -51,7 +51,6 @@ public class DevolucaoController {
         Integer qtDevolucao = devolucao.getQuantidade();
         try {
             if ( qtLivrosEmprestados >= qtDevolucao) {
-                devolucao.setData(LocalDate.now());
                 devolucaoService.salvar(devolucao);
                 livroService.devolverLivro(devolucao.getLivro(), qtDevolucao);
                 retiradaService.devolverLivroDaRetirada(idLivro, idPessoa ,qtDevolucao);

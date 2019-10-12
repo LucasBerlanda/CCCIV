@@ -32,9 +32,6 @@ public class UsuarioController {
             model.addAttribute("usuario", usuario);
             return "/novoUsuario/cadastrar";
         }
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String senha = passwordEncoder.encode(usuario.getSenha());
-        usuario.setSenha(senha);
         usuarioService.salvar(usuario);
         return "redirect:/login";
     }

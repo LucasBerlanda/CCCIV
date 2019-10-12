@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -18,6 +19,7 @@ public class RetiradaServiceImplements implements RetiradaService {
     @Transactional
     public void salvar(Retirada dado) {
         try {
+            dado.setData(LocalDate.now());
             repository.save(dado);
         }catch (Exception e){
             e.printStackTrace();

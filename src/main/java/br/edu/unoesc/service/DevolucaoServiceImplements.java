@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -19,6 +20,7 @@ public class DevolucaoServiceImplements implements DevolucaoService {
     @Transactional
     public void salvar(Devolucao dado) {
         try {
+            dado.setData(LocalDate.now());
             repository.save(dado);
         }catch (Exception e){
             e.printStackTrace();

@@ -41,7 +41,6 @@ public class RetiradaController {
         try {
             Long idLivro = retirada.getLivro().getId(); // id do livro selecionado na tela
             if (livroService.validadeQuantidade(idLivro) >= retirada.getQuantidade()) {
-                retirada.setData(LocalDate.now());
                 retiradaService.salvar(retirada);
                 livroService.retirarLivro(retirada.getLivro(), retirada.getQuantidade());
                 return "redirect:/";
