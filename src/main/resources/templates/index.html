@@ -11,15 +11,15 @@
             <div class="content">
                 <div class="btn-controls">
                     <div class="btn-box-row row-fluid">
-                        <a href="#" class="btn-box big span4"><i class="fas fa-book"></i><b th:text="${livrosCadastradas}"></b>
+                        <a th:href="@{/livro/lista}" class="btn-box big span4"><i class="fas fa-book"></i><b th:text="${livrosCadastradas}"></b>
                             <p class="text-muted">
-                                Qtd. de Livros</p>
-                        </a><a href="#" class="btn-box big span4"><i class="icon-group"></i><b th:text="${pessoasCadastradas}"></b>
+                                Tipos de livros</p>
+                        </a><a th:href="@{/pessoa/lista}" class="btn-box big span4"><i class="icon-group"></i><b th:text="${pessoasCadastradas}"></b>
                             <p class="text-muted">
-                                Qtd. de pessoas</p>
-                        </a><a href="#" class="btn-box big span4"><i class="icon-money"></i><b th:text="${quantidadeTotalLivros}"></b>
+                                Clientes cadastrados</p>
+                        </a><a th:href="@{/livro/lista}" class="btn-box big span4"><i class="fas fa-book"></i><b th:text="${quantidadeTotalLivros}"></b>
                             <p class="text-muted">
-                                Total de livros</p>
+                                Número total de livros</p>
                         </a>
                     </div>
                 <div class="module">

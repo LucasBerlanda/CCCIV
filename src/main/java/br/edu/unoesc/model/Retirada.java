@@ -1,5 +1,6 @@
 package br.edu.unoesc.model;
 
+import org.springframework.data.jpa.repository.Temporal;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -15,7 +16,7 @@ public class Retirada {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/YYYY")
     private LocalDate data;
 
     @NotNull(message = "A pessoa é obrigatória!")

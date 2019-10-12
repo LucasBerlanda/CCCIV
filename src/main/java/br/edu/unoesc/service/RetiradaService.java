@@ -10,7 +10,7 @@ public interface RetiradaService extends Crud<Retirada> {
 
     Integer temQuantidade(Long idPessoa, Long idLivro);
 
-    Retirada devolverLivroDaRetirada(Long idLivro, Integer qtd);
+    Retirada devolverLivroDaRetirada(Long idLivro, Long idPessoa ,Integer qtd);
 
     List<Object> livrosEmprestados();
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Controller
 public class RetiradaController {
@@ -22,14 +23,8 @@ public class RetiradaController {
     @Autowired
     private LivroService livroService;
 
-//    public String caregar(Model model){
-//        model.addAttribute("list", livroService.listar());
-//        model.addAttribute("listPessoa", pessoaService.listar());
-//        return "retirada/cadastrar";
-//    }
-
     @GetMapping("/retirada/cadastro")
-    public String cadastro(Model model){
+    public String cadastro(Model model) {
         model.addAttribute("retirada", new Retirada());
         model.addAttribute("exemplar", new Livro());
         return "retirada/cadastrar";
@@ -37,32 +32,30 @@ public class RetiradaController {
 
     @PostMapping("/retirada/cadastro")
     public String cadastro(@Valid @ModelAttribute("retirada") Retirada retirada,
-                           BindingResult result, Model model){
-       if(result.hasErrors()) {
-           model.addAttribute("retirada", retirada);
-//           model.addAttribute("cliente", retirada.getPessoa());
-           model.addAttribute("exemplar", new Livro());
-           return "retirada/cadastrar";
-       }
-        // id do livro selecionado na tela
-       Long idLivro = retirada.getLivro().getId();
-        if (livroService.validadeQuantidade(idLivro)>= retirada.getQuantidade()){
-            retirada.setData(LocalDate.now());
-            retiradaService.salvar(retirada);
-            livroService.retirarLivro(retirada.getLivro(), retirada.getQuantidade());
-            return "redirect:/";
-        } else {
-            // voltar para a tela mostrando o erro de quantidade invalida
-            System.out.println("quantidade invalidade");
+                           BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("retirada", retirada);
+            model.addAttribute("exemplar", new Livro());
             return "retirada/cadastrar";
         }
+        try {
+            Long idLivro = retirada.getLivro().getId(); // id do livro selecionado na tela
+            if (livroService.validadeQuantidade(idLivro) >= retirada.getQuantidade()) {
+                retirada.setData(LocalDate.now());
+                retiradaService.salvar(retirada);
+                livroService.retirarLivro(retirada.getLivro(), retirada.getQuantidade());
+                return "redirect:/";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "redirect:/retirada/cadastro";
     }
 
     @GetMapping("/retirada/alugar/{id}")
     public String alugar(@PathVariable("id") Long id, Model model) {
         model.addAttribute("livro", new Livro());
         Livro livro = livroService.getById(id);
-        System.out.println("alugar" + livro);
         model.addAttribute("exemplar", livroService.getById(id));
         model.addAttribute("retirada", new Retirada());
         return "retirada/cadastrar";

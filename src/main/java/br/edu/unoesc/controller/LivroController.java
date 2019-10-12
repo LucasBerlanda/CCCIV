@@ -39,7 +39,11 @@ public class LivroController {
             model.addAttribute("livro", livro);
             return "livro/cadastrar";
         }
-        livroService.salvar(livro);
+        try {
+            livroService.salvar(livro);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return "redirect:/";
     }
 
@@ -60,8 +64,13 @@ public class LivroController {
     }
 
     @GetMapping("/livro/excluir/{codigo}")
-    public String excluir(@PathVariable Long codigo) {
-        livroService.excluir(codigo);
+    public String excluir(@PathVariable Long codigo, Model model) {
+        try {
+            livroService.excluir(codigo);
+            return "redirect:/livro/lista";
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return "redirect:/livro/lista";
     }
     @RequestMapping(value="/livro/exemplares", method = RequestMethod.GET)
@@ -90,9 +99,6 @@ public class LivroController {
         List<Object> lista = retiradaService.livrosEmprestados();
         model.addAttribute("lista", lista);
         System.out.println(retiradaService.livrosEmprestados().toString());
-        for(int i = 0; i<=lista.size(); i++){
-            System.out.println(lista);
-        }
         return "livro/livrosEmprestados";
     }
 

@@ -18,7 +18,11 @@ public class DevolucaoServiceImplements implements DevolucaoService {
     @Override
     @Transactional
     public void salvar(Devolucao dado) {
-        repository.save(dado);
+        try {
+            repository.save(dado);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override

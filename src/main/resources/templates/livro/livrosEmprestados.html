@@ -49,7 +49,7 @@
                                 <td th:text="${emp.livro.titulo}"></td>
                                 <td th:text="${emp.livro.genero}"></td>
                                 <td th:text="${emp.pessoa.nome}"></td>
-                                <td th:text="${emp.data}"></td>
+                                <td th:text="${#temporals.format(emp.data, 'dd/MM/yyyy')}"></td>
                                 <td th:text="${emp.quantidade}"></td>
                             </tr>
                         </tbody>

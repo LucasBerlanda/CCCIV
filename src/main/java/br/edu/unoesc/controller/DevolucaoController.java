@@ -1,6 +1,8 @@
 package br.edu.unoesc.controller;
 
 import br.edu.unoesc.model.Devolucao;
+import br.edu.unoesc.model.Livro;
+import br.edu.unoesc.model.Retirada;
 import br.edu.unoesc.service.DevolucaoService;
 import br.edu.unoesc.service.LivroService;
 import br.edu.unoesc.service.RetiradaService;
@@ -31,6 +33,8 @@ public class DevolucaoController {
 
     @GetMapping("/cadastro")
     public String cadastro(Model model){
+        model.addAttribute("devolucao", new Devolucao());
+        model.addAttribute("exemplar", new Livro());
         return "devolucao/cadastrar";
     }
 
@@ -38,36 +42,25 @@ public class DevolucaoController {
     public String cadastro(@Valid @ModelAttribute("devolucao") Devolucao devolucao, BindingResult result, Model model) throws Exception{
         if (result.hasErrors()) {
             model.addAttribute("devolucao", devolucao);
+            model.addAttribute("exemplar", new Livro());
             return "devolucao/cadastrar";
         }
-        // id do livro selecionado na tela
         Long idLivro = devolucao.getLivro().getId();
         Long idPessoa = devolucao.getPessoa().getId();
-//        if(retiradaService.temQuantidade(idPessoa, idLivro)>= devolucao.getQuantidade()){
-//            devolucao.setData(LocalDate.now());
-//            devolucaoService.salvar(devolucao);
-//            livroService.devolverLivro(devolucao.getLivro(), devolucao.getQuantidade());
-//            return "devolucao/cadastrar";
-//        }
-//        else {
-//            // voltar para a tela mostrando o erro de quantidade invalida
-//            System.out.println("voce nao tem essa quantidade de livros para devolver");
-//            return "devolucao/cadastrar";
-//        }
-
+        Integer qtLivrosEmprestados = retiradaService.temQuantidade(idPessoa, idLivro);
+        Integer qtDevolucao = devolucao.getQuantidade();
         try {
-            if (retiradaService.temQuantidade(idPessoa, idLivro) >= devolucao.getQuantidade()) {
+            if ( qtLivrosEmprestados >= qtDevolucao) {
                 devolucao.setData(LocalDate.now());
                 devolucaoService.salvar(devolucao);
-                livroService.devolverLivro(devolucao.getLivro(), devolucao.getQuantidade());
-                System.out.println(devolucao.getLivro().getId());
-                retiradaService.devolverLivroDaRetirada(devolucao.getLivro().getId(), devolucao.getQuantidade());
-                return "devolucao/cadastrar";
+                livroService.devolverLivro(devolucao.getLivro(), qtDevolucao);
+                retiradaService.devolverLivroDaRetirada(idLivro, idPessoa ,qtDevolucao);
+
+                return "redirect:/";
             }
         } catch(Exception e) {
-               e.printStackTrace();
-               model.addAttribute("erro", "O livro ou a o cliente ou a quantidade " +
-                       "a ser devolvida não é correta!");
+            e.printStackTrace();
+            model.addAttribute("erro", "Não foi possível fazer a devolução!");
         }
         return "devolucao/cadastrar";
     }

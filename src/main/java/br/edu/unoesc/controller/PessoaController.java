@@ -31,7 +31,11 @@ public class PessoaController {
             model.addAttribute("pessoa", pessoa);
             return "pessoa/cadastrar";
         }
-        pessoaService.salvar(pessoa);
+        try {
+            pessoaService.salvar(pessoa);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return "redirect:/";
     }
 
@@ -52,7 +56,12 @@ public class PessoaController {
 
     @GetMapping("/pessoa/excluir/{codigo}")
     public String excluir(@PathVariable Long codigo) {
-        pessoaService.excluir(codigo);
+        try {
+            pessoaService.excluir(codigo);
+            return "redirect:/pessoa/lista";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "redirect:/pessoa/lista";
     }
 

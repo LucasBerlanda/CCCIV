@@ -2,7 +2,9 @@ package br.edu.unoesc.service;
 
 import br.edu.unoesc.model.AutoCompleteDTO;
 import br.edu.unoesc.model.Livro;
+import br.edu.unoesc.model.Retirada;
 import br.edu.unoesc.repository.LivroRepository;
+import br.edu.unoesc.repository.RetiradaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -16,20 +18,34 @@ public class LivroServiceImplements implements LivroService {
     @Autowired
     private LivroRepository repository;
 
+    @Autowired
+    RetiradaRepository retiradaRepository;
+
     @Override
     @Transactional
     public void salvar(Livro dado) {
-        this.repository.save(dado);
+        try {
+            this.repository.save(dado);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
     @Transactional
     public void excluir(Long dado) {
-        this.repository.deleteById(dado);
+        List <Retirada> livroRetirada = retiradaRepository.buscaLivroEmprestadoParaExcluir(dado);
+        try {
+            if (livroRetirada.size() == 0){
+                this.repository.deleteById(dado);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
-    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+    @Transactional
     public List listar() {
         return this.repository.findAll();
     }
@@ -56,18 +72,28 @@ public class LivroServiceImplements implements LivroService {
     }
 
     @Override
+    @Transactional
     public Livro retirarLivro(Livro dado, Integer qtd) {
-        Integer qtdAtual = dado.getQuantidade();
-        dado.setQuantidade(qtdAtual - qtd);
-        repository.save(dado);
+        try {
+            Integer qtdAtual = dado.getQuantidade();
+            dado.setQuantidade(qtdAtual - qtd);
+            repository.save(dado);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return dado;
     }
 
     @Override
+    @Transactional
     public Livro devolverLivro(Livro dado, Integer qtd) {
-        Integer qtdAtual = dado.getQuantidade();
-        dado.setQuantidade(qtdAtual + qtd);
-        repository.save(dado);
+        try {
+            Integer qtdAtual = dado.getQuantidade();
+            dado.setQuantidade(qtdAtual + qtd);
+            repository.save(dado);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return dado;
     }
 
@@ -77,23 +103,25 @@ public class LivroServiceImplements implements LivroService {
 
     //busca os livros disponíveis
     @Override
+    @Transactional
     public List<Livro> buscaLivrosDisponiveis() {
         return repository.livrosDisponiveis();
     }
     //busca os livros disponíveis por titulo
+    @Transactional
     public List<Livro> livrosDisponiveisByTitulo(String titulo){
         return repository.livrosDisponiveisByTitulo(titulo);
     }
 
     @Override
-    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+    @Transactional
     public List<AutoCompleteDTO> pesquisaLivro(String keyword){
         return repository.pesquisaLivro(keyword);
     }
 
     //busca livros por titulo
     @Override
-    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+    @Transactional
     public List<Livro> livroByNome(String titulo){
         return repository.livroByNome(titulo);
     }

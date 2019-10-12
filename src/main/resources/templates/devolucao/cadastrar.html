@@ -8,7 +8,7 @@
 <div class="">
     <div class="span4" data-th-replace="import/menuLateral :: menuLateral"></div>
     <div class="span8">
-        <div class="alert alert-block span8" th:if="${erro}">
+        <div class="alert alert-error span4" th:if="${erro}">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <h5 th:text="*{erro}"></h5>
         </div>
@@ -17,25 +17,25 @@
             <div class="form-group span8">
                 <div>
                     <label>Cliente:</label>
-                    <input type="hidden" id="user" value="" name="pessoa" required th:object="${cliente}">
-                    <input type="text" class="form-control span4" id="cliente" placeholder="Nome do cliente" autocomplete="off" required>
+                    <input type="hidden" id="user" value="" name="pessoa" required >
+                    <input type="text" class="form-control span4" id="cliente" value="" placeholder="Nome do cliente" autocomplete="off" required>
                 </div>
-<!--                <label class="label label-important" th:if="${#fields.hasErrors('pessoa')}" th:errors="*{pessoa}">Erro</label>-->
+                <label class="label label-important" th:if="${#fields.hasErrors('pessoa')}" th:errors="*{pessoa}">Erro</label>
             </div>
             <div class="form-group span8">
                 <div>
                     <label>Livro:</label>
-                    <input type="hidden" id="idLivro" value="" name="livro" th:object="${exemplar}" required>
-                    <input type="text" class="form-control span4" id="livro" placeholder="Nome do livro" autocomplete="off" required>
+                    <input type="hidden" id="idLivro" value="" name="livro" required>
+                    <input type="text" class="form-control span4" id="livro" value="" placeholder="Nome do livro" autocomplete="off" required>
                 </div>
-<!--                <label class="label label-important" th:if="${#fields.hasErrors('livro')}" th:errors="*{livro}">Erro</label>-->
+                <label class="label label-important" th:if="${#fields.hasErrors('livro')}" th:errors="*{livro}">Erro</label>
             </div>
             <div class="form-group span8">
                 <div>
                     <label>Quantidade:</label>
                     <input type="number" name="quantidade" class="form-control span4" required placeholder="Quantidade">
                 </div>
-<!--                <label class="label label-important" th:if="${#fields.hasErrors('quantidade')}" th:errors="*{quantidade}">Erro</label>-->
+                <label class="label label-important" th:if="${#fields.hasErrors('quantidade')}" th:errors="*{quantidade}">Erro</label>
             </div>
             <div class="form-group span8">
                 <button type="submit" name="Enviar" class="btn btn-success">Salvar</button>
@@ -47,11 +47,6 @@
 <div th:data-th-replace="@{import/scripts :: script}" ></div>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<!--<script>-->
-<!--$("#cliente").autocomplete({-->
-<!--    source: 'http://localhost:8080/pessoa/clientes'-->
-<!--});-->
-<!--</script>-->
 
 <script>
 $("#cliente").autocomplete({

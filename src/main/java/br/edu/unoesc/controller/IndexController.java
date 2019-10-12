@@ -32,9 +32,15 @@ public class IndexController{
  * mini-biblioteca:
  * cadastro de exemplares -> ok
  * cadastro de pessoas -> ok
- * retiradas e devoluções de exemplares por pessoas -> falta fazer validaçoes
- * saldo de exemplares - nao deixar retirar livro que nao tem disponibilidade -> falta fazer validações
+ * retiradas e devoluções de exemplares por pessoas -> ok
+ * saldo de exemplares - nao deixar retirar livro que nao tem disponibilidade -> ok
  * lista de exemplares emprestados -> ok
  * lista de livros disponíveis -> ok
- * baeldung
+ * arrumar validação de input no cadastro de devoluções -> ok
+ * editar quantidade disponivel de livros ->
+ * arrumar icone de qt de livros no dashboard -> ok
+
+ * arrumar cadastro de usuário ->
+ * arrumar lista de usuário ->
+ * arrumar login de usuário ->
  */

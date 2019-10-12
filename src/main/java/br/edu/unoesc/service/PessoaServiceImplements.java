@@ -2,7 +2,9 @@ package br.edu.unoesc.service;
 
 import br.edu.unoesc.model.AutoCompleteDTO;
 import br.edu.unoesc.model.Pessoa;
+import br.edu.unoesc.model.Retirada;
 import br.edu.unoesc.repository.PessoaRepository;
+import br.edu.unoesc.repository.RetiradaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -16,6 +18,9 @@ public class PessoaServiceImplements implements PessoaService {
     @Autowired
     private PessoaRepository repository;
 
+    @Autowired
+    private RetiradaRepository retiradaRepository;
+
     @Override
     @Transactional
     public void salvar(Pessoa dado) {
@@ -25,12 +30,18 @@ public class PessoaServiceImplements implements PessoaService {
     @Override
     @Transactional
     public void excluir(Long dado) {
-        repository.deleteById(dado);
-
+        List <Retirada> pessoaRetirada = retiradaRepository.buscaLivroEmprestadoParaExcluirPessoa(dado);
+        try {
+            if (pessoaRetirada.size() == 0) {
+                repository.deleteById(dado);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
-    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+    @Transactional
     public List listar() {
         return this.repository.findAll();
     }
@@ -41,18 +52,17 @@ public class PessoaServiceImplements implements PessoaService {
         Integer qtd = 0;
         List<Pessoa> pessoas = this.repository.findAll();
         qtd = pessoas.size();
-        System.out.println(qtd);
         return qtd;
     }
 
     @Override
-    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+    @Transactional
     public List<AutoCompleteDTO> pesquisaCliente(String keyword){
         return repository.pesquisaCliente(keyword);
     }
 
     @Override
-    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+    @Transactional
     public List<Pessoa> pessoaByNome(String nomePessoa){
         return repository.pessoaByNome(nomePessoa);
     }
