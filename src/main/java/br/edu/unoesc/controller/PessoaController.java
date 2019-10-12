@@ -1,8 +1,7 @@
 package br.edu.unoesc.controller;
 
-import br.edu.unoesc.model.AutoCompleteDTO;
+import br.edu.unoesc.dto.AutoCompleteDTO;
 import br.edu.unoesc.service.PessoaService;
-import br.edu.unoesc.service.PessoaServiceImplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

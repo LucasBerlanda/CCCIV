@@ -1,5 +1,6 @@
 package br.edu.unoesc.controller;
 
+import br.edu.unoesc.dto.AutoCompleteDTO;
 import br.edu.unoesc.model.*;
 import br.edu.unoesc.service.LivroService;
 import br.edu.unoesc.service.PessoaService;

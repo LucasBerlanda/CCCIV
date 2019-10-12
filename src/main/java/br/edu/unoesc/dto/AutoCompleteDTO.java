@@ -1,4 +1,4 @@
-package br.edu.unoesc.model;
+package br.edu.unoesc.dto;
 
 public interface AutoCompleteDTO {
 

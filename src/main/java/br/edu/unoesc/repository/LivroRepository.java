@@ -1,14 +1,12 @@
 package br.edu.unoesc.repository;
 
-import br.edu.unoesc.model.AutoCompleteDTO;
+import br.edu.unoesc.dto.AutoCompleteDTO;
 import br.edu.unoesc.model.Livro;
-import br.edu.unoesc.model.Pessoa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Repository

@@ -1,6 +1,6 @@
 package br.edu.unoesc.service;
 
-import br.edu.unoesc.model.AutoCompleteDTO;
+import br.edu.unoesc.dto.AutoCompleteDTO;
 import org.springframework.stereotype.Service;
 import br.edu.unoesc.model.Pessoa;
 

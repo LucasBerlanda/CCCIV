@@ -3,30 +3,38 @@
 
 <head th:data-th-replace="@{import/head :: head}" ></head>
 <body>
-<div class="span10 pagination-centered">
-    <form th:action="@{/loginUser}" method="post" class="span10">
-        <div class="form-group span10">
-            <h3>Login</h3>
+<div class="offset3 span7 pagination-centered">
+    <h2 class="titulo">Minha biblioteca</h2>
+</div>
+<div class="offset3 span7 pagination-centered login well">
+    <form th:action="@{/loginUser}" method="post" class="span6">
+        <div class="form-group span6">
+            <h2>Login</h2>
         </div>
-        <div class="form-group span10">
+        <div class="form-group span6">
             <div>
                 <label>Cpf</label>
-                <input type="text" class="form-control span8" name="username" placeholder="Cpf">
+                <input type="text" class="form-control span4" name="username" placeholder="Cpf">
             </div>
         </div>
-        <div class="form-group span10">
+        <div class="form-group span6">
             <div>
                 <label>Senha</label>
-                <input type="password" class="form-control span8" name="password" placeholder="Senha">
+                <input type="password" class="form-control span4" name="password" placeholder="Senha">
             </div>
         </div>
-        <div class="form-group span10">
-            <button type="submit" class="btn btn-success">Entrar</button>
-        </div>
-        <div class="form-group span10">
-            <button class="btn btn-light"><a th:href="@{/novoUsuario/cadastro}"><i class="fas fa-users"></i> Cadastrar Usuario</a></button>
+        <div class="form-group span6">
+            <div>
+                <button type="submit" class="btn btn-success">Entrar</button>
+            </div>
         </div>
     </form>
+    <div class="span6">
+        <div class="span6">
+            <button class="btn btn-light"><a th:href="@{/novoUsuario/cadastro}"><i class="fas fa-users"></i> Cadastrar Usuario</a></button>
+        </div>
+    </div>
 </div>
+<div class="span3"></div>
 </body>
 </html>

@@ -1,13 +1,12 @@
 package br.edu.unoesc.service;
 
-import br.edu.unoesc.model.AutoCompleteDTO;
+import br.edu.unoesc.dto.AutoCompleteDTO;
 import br.edu.unoesc.model.Livro;
 import br.edu.unoesc.model.Retirada;
 import br.edu.unoesc.repository.LivroRepository;
 import br.edu.unoesc.repository.RetiradaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
