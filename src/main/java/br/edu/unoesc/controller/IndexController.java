@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 //spring.resources.static-locations=classpath:/custom/
 @Controller
 public class IndexController{

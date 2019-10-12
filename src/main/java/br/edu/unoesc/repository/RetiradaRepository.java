@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface RetiradaRepository extends JpaRepository<Retirada, Long> {
 
-    @Query(value = "Select sum(r.quantidade) from Retirada r where pessoa_id = :pessoa_id && livro_id = :livro_id", nativeQuery = true)
+    @Query("Select sum(r.quantidade) from Retirada r where r.pessoa.id = :pessoa_id and r.livro.id = :livro_id")
     public Integer temQuantidade(@Param("pessoa_id") Long id, @Param("livro_id") Long idLivro);
 
     @Query(value ="SELECT * FROM Retirada r where r.livro_id = :idLivro and r.pessoa_id = :idPessoa and r.quantidade >= :qtd ORDER BY r.id LIMIT 1", nativeQuery = true)
