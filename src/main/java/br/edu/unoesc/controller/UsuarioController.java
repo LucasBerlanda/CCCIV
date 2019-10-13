@@ -32,7 +32,14 @@ public class UsuarioController {
             model.addAttribute("usuario", usuario);
             return "/novoUsuario/cadastrar";
         }
-        usuarioService.salvar(usuario);
-        return "redirect:/login";
+        try {
+            usuarioService.salvar(usuario);
+            return "redirect:/login";
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return "/novoUsuario/cadastrar";
+
+
     }
 }

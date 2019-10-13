@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name ="Usuario")
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"cpf"})})
 public class Usuario {
 
     @Id
