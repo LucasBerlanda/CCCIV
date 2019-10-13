@@ -1,5 +1,6 @@
 package br.edu.unoesc.model;
 
+import org.hibernate.validator.constraints.UniqueElements;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
+@Table(name ="Usuario")
 public class Usuario {
 
     @Id
@@ -29,7 +31,7 @@ public class Usuario {
     @NotNull
     @NotEmpty(message = "O CPF é obrigatório!")
     @CPF(message = "Esse CPF é inválido!")
-    @Column(name="cpf", nullable=false)
+    @Column(name="cpf", unique = true)
     private String cpf;
 
     @NotNull

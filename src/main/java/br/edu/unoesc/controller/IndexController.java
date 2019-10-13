@@ -41,6 +41,6 @@ public class IndexController{
  * editar quantidade disponivel de livros ->
  * arrumar icone de qt de livros no dashboard -> ok
 
- * arrumar cadastro de usuário ->
+ * arrumar cadastro de usuário -> ok
  * arrumar login de usuário -> ok
  */
