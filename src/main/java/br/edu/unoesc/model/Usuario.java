@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.UniqueElements;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -31,7 +32,8 @@ public class Usuario {
     @NotNull
     @NotEmpty(message = "O CPF é obrigatório!")
     @CPF(message = "Esse CPF é inválido!")
-    @Column(name="cpf", unique = true)
+    @Size(min = 11, max = 11, message = "CPF inválido!")
+    @Column(name="cpf", nullable=false)
     private String cpf;
 
     @NotNull
@@ -52,55 +54,41 @@ public class Usuario {
         this.telefone = telefone;
         this.senha = senha;
     }
-
     public Usuario() {
-
     }
-
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
-
     public String getSobrenome() {
         return sobrenome;
     }
-
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
     }
-
     public String getCpf() {
         return cpf;
     }
-
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
     public String getTelefone() {
         return telefone;
     }
-
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-
     public String getSenha() {
         return senha;
     }
-
     public void setSenha(String senha) {
         this.senha = senha;
     }

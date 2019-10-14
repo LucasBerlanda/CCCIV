@@ -37,6 +37,7 @@ public class UsuarioController {
             return "redirect:/login";
         } catch (Exception e){
             e.printStackTrace();
+            model.addAttribute("erro", "Usuário já existente com esse CPF!");
         }
         return "/novoUsuario/cadastrar";
 

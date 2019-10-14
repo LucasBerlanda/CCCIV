@@ -6,6 +6,10 @@
 <body>
 
 <div class="offset3 span6 pagination-centered well cadastroUser">
+    <div class="alert alert-error span5" th:if="${erro}">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h5 th:text="*{erro}"></h5>
+    </div>
     <form th:action="@{/novoUsuario/cadastro}" method="post" th:object="${usuario}" class="span5">
         <h2 class="span5">Cadastro de usuario</h2>
         <input type="hidden" name="id" th:field="*{id}">
@@ -52,5 +56,6 @@
         </div>
     </form>
 </div>
+<div th:data-th-replace="@{import/scripts :: script}" ></div>
 </body>
 </html>
