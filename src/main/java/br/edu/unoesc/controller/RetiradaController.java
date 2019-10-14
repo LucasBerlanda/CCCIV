@@ -38,8 +38,13 @@ public class RetiradaController {
         }
         try {
             Long idLivro = retirada.getLivro().getId(); // id do livro selecionado na tela
+            Long idPessoa = retirada.getPessoa().getId(); // id da Pessoa selecionada na tela
             if (livroService.validadeQuantidade(idLivro) >= retirada.getQuantidade()) {
-                retiradaService.salvar(retirada);
+                if(retiradaService.retiradaIgualExistente(idLivro, idPessoa) != null){
+                    retiradaService.alterarRetiradaIgualExistente(idLivro, idPessoa, retirada.getQuantidade());
+                } else {
+                    retiradaService.salvar(retirada);
+                }
                 livroService.retirarLivro(retirada.getLivro(), retirada.getQuantidade());
                 return "redirect:/";
             }

@@ -78,4 +78,18 @@ public class RetiradaServiceImplements implements RetiradaService {
         return repository.livrosEmprestadosByLivro(titulo);
     }
 
+    @Override
+    public Retirada retiradaIgualExistente(Long idLivro, Long idPessoa) {
+        Retirada retirada = repository.retiradaIgualExistente(idLivro, idPessoa);
+        return retirada;
+    }
+
+    @Override
+    public Retirada alterarRetiradaIgualExistente(Long idLivro, Long idPessoa, Integer qtd) {
+        Retirada retirada = repository.retiradaIgualExistente(idLivro, idPessoa);
+        retirada.setQuantidade(retirada.getQuantidade() + qtd);
+        salvar(retirada);
+        return retirada;
+    }
+
 }

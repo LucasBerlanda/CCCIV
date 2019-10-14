@@ -32,4 +32,8 @@ public interface RetiradaRepository extends JpaRepository<Retirada, Long> {
 
     @Query("SELECT r from Retirada r where r.quantidade > 0 and r.livro.titulo like ?1%")
     public List<Retirada> livrosEmprestadosByLivro(String titulo);
+
+    @Query("SELECT r from Retirada r where  r.livro.id = :idLivro AND r.pessoa.id = :idPessoa")
+    Retirada retiradaIgualExistente(@Param("idLivro") Long idLivro, @Param("idPessoa") Long idPessoa);
+
 }

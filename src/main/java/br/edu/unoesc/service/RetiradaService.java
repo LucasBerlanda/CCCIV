@@ -17,4 +17,8 @@ public interface RetiradaService extends Crud<Retirada> {
     List<Retirada> livrosEmprestadosByCliente(String nome);
 
     List<Retirada> livrosEmprestadosByLivro(String titulo);
+
+    Retirada retiradaIgualExistente(Long idLivro, Long idPessoa);
+
+    Retirada alterarRetiradaIgualExistente(Long idLivro, Long idPessoa, Integer qtd);
 }
