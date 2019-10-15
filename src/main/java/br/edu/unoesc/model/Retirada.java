@@ -1,6 +1,5 @@
 package br.edu.unoesc.model;
 
-import org.springframework.data.jpa.repository.Temporal;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -15,6 +14,7 @@ public class Retirada {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
 
     @DateTimeFormat(pattern = "dd/MM/YYYY")
     private LocalDate data;
@@ -32,14 +32,6 @@ public class Retirada {
     @NotNull(message = "A quantidade é obrigatória!")
 //    @Min(value = 1, message = "A quantidade é inválida")
     private Integer quantidade;
-
-    /**
-     * A FAZER>>>
-     * falta fazer a quantidade da retirada aqui
-     * fazer os joins com as anotações @JoinColunm(name=" name_id")
-     * fazer no @ManyToOne o (feth = FetchType.LAZY)
-     * se precisar fazer o toString
-     * **/
 
     public Retirada() {
 
