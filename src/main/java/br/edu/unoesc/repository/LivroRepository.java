@@ -14,8 +14,11 @@ public interface LivroRepository extends JpaRepository<Livro, Long> {
 
     Livro getById(Long id);
 
-    @Query("SELECT l.id as id, l.titulo as label FROM Livro l where titulo like %:keyword%")
+    @Query("SELECT l.id as id, l.titulo as label FROM Livro l where titulo like %:keyword% and l.quantidade > 0")
     public List<AutoCompleteDTO> pesquisaLivro(@Param("keyword") String keyword);
+
+    @Query("SELECT l.id as id, l.titulo as label FROM Livro l where titulo like %:keyword%")
+    public List<AutoCompleteDTO> pesquisaLivroDevolucao(@Param("keyword") String keyword);
 
     @Query("Select l.quantidade from Livro l where l.id = :id")
     public Integer quantidadeDoLivro(@Param("id") Long id);

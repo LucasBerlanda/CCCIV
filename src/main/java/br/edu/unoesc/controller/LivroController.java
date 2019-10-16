@@ -81,6 +81,15 @@ public class LivroController {
         List<AutoCompleteDTO> lista = livroService.pesquisaLivro(keyword);
         return lista;
     }
+
+    @RequestMapping(value="/livro/exemplares/devolucao", method = RequestMethod.GET)
+    @ResponseBody
+    public List<AutoCompleteDTO> exemplaresDevolucao(HttpServletRequest request){
+        String keyword = request.getParameter("term");
+        List<AutoCompleteDTO> lista = livroService.pesquisaLivroDevolucao(keyword);
+        return lista;
+    }
+
     @GetMapping("/livro/pesquisaTituloLivro")
     public String busca(String titulo, Model model) {
         model.addAttribute("lista", livroService.livroByNome(titulo));

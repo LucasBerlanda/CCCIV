@@ -11,6 +11,8 @@ public interface LivroService extends Crud<Livro> {
 
     public List<AutoCompleteDTO> pesquisaLivro(String keyword);
 
+    public List<AutoCompleteDTO> pesquisaLivroDevolucao(String keyword);
+
     public List<Livro> livroByNome(String titulo);
 
     Integer quantidade();

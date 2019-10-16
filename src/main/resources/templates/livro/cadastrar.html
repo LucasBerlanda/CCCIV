@@ -51,7 +51,7 @@
                     <div class="form-group span8">
                         <div>
                             <label>Quantidade</label>
-                            <input type="number" class="form-control span4" th:field="*{quantidade}" name="quantidade" placeholder="Quantidade">
+                            <input type="number" min="1" class="form-control span4" th:field="*{quantidade}" name="quantidade" placeholder="Quantidade">
                         </div>
                         <label class="label label-important" th:if="${#fields.hasErrors('quantidade')}" th:errors="*{quantidade}">Erro</label>
                     </div>

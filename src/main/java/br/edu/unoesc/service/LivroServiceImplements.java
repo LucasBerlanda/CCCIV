@@ -118,6 +118,12 @@ public class LivroServiceImplements implements LivroService {
         return repository.pesquisaLivro(keyword);
     }
 
+    @Override
+    @Transactional
+    public List<AutoCompleteDTO> pesquisaLivroDevolucao(String keyword){
+        return repository.pesquisaLivroDevolucao(keyword);
+    }
+
     //busca livros por titulo
     @Override
     @Transactional
