@@ -101,6 +101,7 @@ public class LivroController {
         model.addAttribute("lista", livroService.livrosDisponiveisByTitulo(titulo));
         model.addAttribute("pessoasCadastradas", pessoaService.quantidade());
         model.addAttribute("livrosCadastradas", livroService.quantidade());
+        model.addAttribute("quantidadeTotalLivros", livroService.quantidadeTotal());
         return "index";
     }
 

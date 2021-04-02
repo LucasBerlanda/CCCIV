@@ -12,6 +12,9 @@ public class CrudApplication {
 
 }
 /**
+ * 
+ * senha de 1 até 9
+ *
  * grupos de 3
  * mini-biblioteca:
  * cadastro de exemplares

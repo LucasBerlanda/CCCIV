@@ -1,8 +1,13 @@
 package br.edu.unoesc.controller;
 
+import br.edu.unoesc.model.Usuario;
 import br.edu.unoesc.service.LivroService;
 import br.edu.unoesc.service.PessoaService;
+import br.edu.unoesc.service.UsuarioService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,13 +22,17 @@ public class IndexController{
 
     @Autowired
     private LivroService livroService;
-
+  
+    
+    
     @GetMapping("/")
     public String index(Model model){
-        model.addAttribute("pessoasCadastradas", pessoaService.quantidade());
+    	
+    	model.addAttribute("pessoasCadastradas", pessoaService.quantidade());
         model.addAttribute("livrosCadastradas", livroService.quantidade());
         model.addAttribute("quantidadeTotalLivros", livroService.quantidadeTotal());
         model.addAttribute("lista", livroService.buscaLivrosDisponiveis());
+        
         return "index";
     }
 

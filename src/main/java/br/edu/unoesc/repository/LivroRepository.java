@@ -29,7 +29,7 @@ public interface LivroRepository extends JpaRepository<Livro, Long> {
     @Query("SELECT l from Livro l where l.quantidade >= 1")
     public List<Livro> livrosDisponiveis();
 
-    @Query("SELECT l from Livro l where l.quantidade >= 1 and l.titulo like ?1%")
+    @Query("SELECT l from Livro l where l.quantidade >= 1 and l.titulo like %?1%")
     public List<Livro> livrosDisponiveisByTitulo(String titulo);
 
     @Query("SELECT SUM(l.quantidade) from Livro l")

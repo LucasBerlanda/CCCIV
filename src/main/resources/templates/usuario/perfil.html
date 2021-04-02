@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head th:data-th-replace="@{import/head :: head}" >
+
+</head>
+<body>
+<div data-th-replace="import/menuSuperior :: menuSuperior"></div>
+<div>
+    <div class="span4" data-th-replace="import/menuLateral :: menuLateral"></div>
+        <div class="">
+            <div class="span8">
+               <h2 class="span8">Perfil usuario</h2>
+                    <input type="hidden" name="id" th:field="*{id}">
+            </div>
+        </div>
+</div>
+</body>
+</html>
